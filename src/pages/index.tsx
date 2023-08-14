@@ -5,6 +5,7 @@ import SqlViewer from "@/components/SqlViewer";
 import GithubIcon from "@/components/icons/GithubIcon";
 import Head from "next/head";
 import { useState } from "react";
+import axios from "axios";
 
 interface ChatResponse {
   prompt: string;
@@ -37,6 +38,7 @@ export default function Home() {
     });
 
     const data = await res.json();
+
     setResponse(data);
     setWaitingResponse(false);
   };
