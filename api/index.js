@@ -7,12 +7,14 @@ import { DataSource } from "typeorm";
 import { configDotenv } from "dotenv";
 
 const app = express();
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors());
 
-app.get("api/query", async (req, res) => {
+app.get("/api/query", async (req, res) => {
   const prompt = req.query.prompt;
 
 console.log("prompt: " + prompt);
+
+  res.json({ prompt: prompt, output: "output" });
 
   // configDotenv();
 
