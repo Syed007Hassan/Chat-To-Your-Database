@@ -26,16 +26,21 @@ export default function Home() {
     setPrompt(prompt);
 
     // Post value to API
-    const res = await fetch("http://localhost:3000/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const res = await fetch(
+      `http://localhost:5000/api/chat/query?prompt=${encodeURIComponent(
+        prompt
+      )}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      body: JSON.stringify({
-        query: prompt,
-      }),
-    });
+        body: JSON.stringify({
+          query: prompt,
+        }),
+      }
+    );
 
     const data = await res.json();
 
