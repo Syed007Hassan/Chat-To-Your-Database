@@ -25,27 +25,20 @@ export default function Home() {
     setWaitingResponse(true);
     setPrompt(prompt);
 
-    // Post value to API
-    const res = await fetch(
-      `http://localhost:5000/api/chat/query?prompt=${encodeURIComponent(
-        prompt
-      )}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/query?prompt=${encodeURIComponent(prompt)}`
+      );
 
-        body: JSON.stringify({
-          query: prompt,
-        }),
-      }
-    );
+      const data = response.data;
 
-    const data = await res.json();
+      console.log(data);
 
-    setResponse(data);
-    setWaitingResponse(false);
+      setResponse(data);
+      setWaitingResponse(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getSqlViewerContent = () => {
