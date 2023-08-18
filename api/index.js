@@ -34,10 +34,11 @@ console.log("prompt: " + prompt);
 
   const executor = createSqlAgent(model, toolkit);
 
+ 
   let response = {
     prompt: prompt,
-    output: "",
-    intermediateSteps: [],
+    sqlQuery: "",
+    result: [],
     error: "",
   };
 
@@ -47,8 +48,8 @@ console.log("prompt: " + prompt);
     result.intermediateSteps.forEach((step) => {
       if (step.action.tool === "query-sql") {
         response.prompt = prompt;
-        response.output = step.observation;
-        response.intermediateSteps = result.intermediateSteps;
+        response.sqlQuery = step.action.toolInput;
+        response.result = JSON.parse(step.observation);
       }
     });
 
