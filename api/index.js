@@ -12,9 +12,7 @@ app.use(cors());
 app.get("/api/query", async (req, res) => {
   const prompt = req.query.prompt;
 
-console.log("prompt: " + prompt);
-
-  // res.json({ prompt: prompt, output: "output" });
+  console.log("prompt: " + prompt);
 
   configDotenv();
 
