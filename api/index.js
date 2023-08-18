@@ -6,33 +6,40 @@ import { createSqlAgent, SqlToolkit } from "langchain/agents/toolkits/sql";
 import { DataSource } from "typeorm";
 import { configDotenv } from "dotenv";
 
+// Load configuration
+try {
+  configDotenv();
+} catch (e) {
+  console.error("Error loading configuration:", e);
+  process.exit(1);
+}
+
+// Create server
 const app = express();
 app.use(cors());
 
+// Create database connection
+const datasource = new DataSource({
+  type: "sqlite",
+  database: "./data/northwind.db",
+});
+const db = await SqlDatabase.fromDataSourceParams({
+  appDataSource: datasource,
+});
+const toolkit = new SqlToolkit(db);
+
+// Create OpenAI model
+const model = new OpenAI({
+  temperature: 0,
+});
+const executor = createSqlAgent(model, toolkit);
+
+// Route handler
 app.get("/api/query", async (req, res) => {
   const prompt = req.query.prompt;
 
   console.log("prompt: " + prompt);
 
-  configDotenv();
-
-  const datasource = new DataSource({
-    type: "sqlite",
-    database: "./data/northwind.db",
-  });
-
-  const db = await SqlDatabase.fromDataSourceParams({
-    appDataSource: datasource,
-  });
-
-  const toolkit = new SqlToolkit(db);
-  const model = new OpenAI({
-    temperature: 0,
-  });
-
-  const executor = createSqlAgent(model, toolkit);
-
- 
   let response = {
     prompt: prompt,
     sqlQuery: "",
@@ -66,6 +73,7 @@ app.get("/api/query", async (req, res) => {
   await datasource.destroy();
 });
 
+// Start server
 app.listen(5000, () => {
   console.log("Server started on port 5000");
 });
