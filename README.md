@@ -1,17 +1,30 @@
 # Chat to your database
 
-This is an experimental app to test the abilities of LLMs to query SQL databases using natural language.
-To use it, you should add your OPENAI_API_KEY to the .env.local file.
+This is an experimental app to test the abilities of LLMs to query SQL databases using [SQL Agents](https://github.com/Syed007Hassan/Langchain) provided by Langchain.
+To use it, you should add your OPENAI_API_KEY to the .env file in api folder.
+
+```
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
 
 ## Installing the app
 
 ```bash!
+cd api
+npm install
+```
+
+```bash
+cd client
 npm install
 ```
 
 ## Running the app
 
 ```bash
+/api
+nodemon or npm run start
+/client
 npm run dev
 ```
 
