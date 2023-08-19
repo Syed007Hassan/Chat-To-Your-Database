@@ -33,7 +33,9 @@ npm run dev
 
 ## See it in action
 
-https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/a56b32f4-c32a-4f29-9c4d-c04925aef6fe
+https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/2616a2b5-0512-47f0-8271-014a6d243213
+
+
 
 
 
