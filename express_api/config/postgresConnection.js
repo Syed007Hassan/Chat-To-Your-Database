@@ -11,8 +11,15 @@ const postgresConnectionOptions = {
   schema: "public",
 } 
 
+// const PostgresConnectionOptions = {
+//   type: "postgres",
+//   host: "localhost",
+//   database: "mydb2",
+//   port: 5432,
+//   username: "hassan",
+//   password: "fast",
+//   schema: "public",
+// }
 
-//    
 
-
-export default postgresConnectionOptions;
+export default PostgresConnectionOptions;
