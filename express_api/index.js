@@ -22,15 +22,15 @@ app.use(cors());
 
 // Create database connection
 const dataSource = new DataSource({
-  // type: "sqlite",
-  // database: "./data/northwind.db",
-  type: "postgres",
-  host: "localhost",
-  database: "mydb2",
-  port: 5432,
-  username: "hassan",
-  password: "fast",
-  schema: "public",
+  type: "sqlite",
+  database: "./data/northwind.db",
+  // type: "postgres",
+  // host: "localhost",
+  // database: "mydb2",
+  // port: 5432,
+  // username: "hassan",
+  // password: "fast",
+  // schema: "public",
 });
 
 const db = await SqlDatabase.fromDataSourceParams({
