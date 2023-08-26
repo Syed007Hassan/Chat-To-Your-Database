@@ -64,57 +64,57 @@ app.get("/api/query", async (req, res) => {
   };
 
   try {
-    const result = await executor.call({ input: prompt });
+    // const result = await executor.call({ input: prompt });
     
 
-    // const result = {
-    //   "output": "[{\"id\":1,\"name\":\"test\",\"email\":\"test@gmail.com\"},{\"id\":3,\"name\":\"test\",\"email\":\"test2@gmail.com\"},{\"id\":4,\"name\":\"hassan\",\"email\":\"hassan@gmail.com\"}]",
-    //   "intermediateSteps": [
-    //     {
-    //       "action": {
-    //         "tool": "list-tables-sql",
-    //         "toolInput": "",
-    //         "log": "Action: list-tables-sql\nAction Input: \"\""
-    //       },
-    //       "observation": "comment, topic, user"
-    //     },
-    //     {
-    //       "action": {
-    //         "tool": "info-sql",
-    //         "toolInput": "user",
-    //         "log": " I should look at the schema of the user table to see what columns I can query.\nAction: info-sql\nAction Input: \"user\""   
-    //       },
-    //       "observation": "CREATE TABLE \"public\".\"user\" (\nid integer NOT NULL, name character varying NOT NULL, email character varying NOT NULL, password character varying NOT NULL, avatar character varying ) \nSELECT * FROM \"public\".\"user\" LIMIT 3;\n id name email password avatar\n 1 test test@gmail.com $2b$10$eobufm5KzyADtsAFQs1ybuAOD4Pi.Z7OtJyFIfWt21U.6mQoHmR/m null\n 3 test test2@gmail.com $2b$10$g2EDEdR71HLBtof/AAswRO479Lv.pIsZK0ChhHD2sfljyAd0rHbaC null\n 4 hassan hassan@gmail.com $2b$10$2QK3spYLlUr2goCN0nLs9.cIP//6KeSf7ptkjLDj3A14HxB3UBsTG null\n"
-    //     },
-    //     {
-    //       "action": {
-    //         "tool": "query-sql",
-    //         "toolInput": "SELECT id, name, email FROM user LIMIT 10;",
-    //         "log": " I should query the user table for all users.\nAction: query-sql\nAction Input: SELECT id, name, email FROM user LIMIT 10;"  
-    //       },
-    //       "observation": "QueryFailedError: column \"id\" does not exist"
-    //     },
-    //     {
-    //       "action": {
-    //         "tool": "query-sql",
-    //         "toolInput": "SELECT \"id\", \"name\", \"email\" FROM \"user\" LIMIT 10;",
-    //         "log": " I should use the table name in quotes.\nAction: query-sql\nAction Input: SELECT \"id\", \"name\", \"email\" FROM \"user\" LIMIT 10;"
-    //       },
-    //       "observation": "[{\"id\":1,\"name\":\"test\",\"email\":\"test@gmail.com\"},{\"id\":3,\"name\":\"test\",\"email\":\"test2@gmail.com\"},{\"id\":4,\"name\":\"hassan\",\"email\":\"hassan@gmail.com\"}]"
-    //     }
-    //   ]
-    // }
+    const result = {
+      "output": "The countries with customers in the database are Germany, Mexico, UK, Sweden, France, Spain, Canada, Argentina, Switzerland, and Brazil.",
+      "intermediateSteps": [
+        {
+          "action": {
+            "tool": "list-tables-sql",
+            "toolInput": "",
+            "log": "Action: list-tables-sql\nAction Input: \"\""
+          },
+          "observation": "Categories, CustomerCustomerDemo, CustomerDemographics, Customers, EmployeeTerritories, Order Details, Orders, Products, Regions, Shippers, Suppliers, Territories, Employees"
+        },
+        {
+          "action": {
+            "tool": "info-sql",
+            "toolInput": "Customers",
+            "log": " I should look at the Customers table to see what columns I can query.\nAction: info-sql\nAction Input: \"Customers\""
+          },
+          "observation": "CREATE TABLE Customers (\nCustomerID TEXT , CompanyName TEXT , ContactName TEXT , ContactTitle TEXT , Address TEXT , City TEXT , Region TEXT , PostalCode TEXT , Country TEXT , Phone TEXT , Fax TEXT ) \nSELECT * FROM \"Customers\" LIMIT 3;\n CustomerID CompanyName ContactName ContactTitle Address City Region PostalCode Country Phone Fax\n ALFKI Alfreds Futterkiste Maria Anders Sales Representative Obere Str. 57 Berlin Western Europe 12209 Germany 030-0074321 030-0076545\n ANATR Ana Trujillo Emparedados y helados Ana Trujillo Owner Avda. de la Constitución 2222 México D.F. Central America 05021 Mexico (5) 555-4729 (5) 555-3745\n ANTON Antonio Moreno Taquería Antonio Moreno Owner Mataderos  2312 México D.F. Central America 05023 Mexico (5) 555-3932 null\n"
+        },
+        {
+          "action": {
+            "tool": "query-sql",
+            "toolInput": "SELECT DISTINCT Country FROM Customers LIMIT 10;",
+            "log": " I should query the Customers table for customers with respect to distinct country.\nAction: query-sql\nAction Input: SELECT DISTINCT Country FROM Customers LIMIT 10;"
+          },
+          "observation": "[{\"Country\":\"Germany\"},{\"Country\":\"Mexico\"},{\"Country\":\"UK\"},{\"Country\":\"Sweden\"},{\"Country\":\"France\"},{\"Country\":\"Spain\"},{\"Country\":\"Canada\"},{\"Country\":\"Argentina\"},{\"Country\":\"Switzerland\"},{\"Country\":\"Brazil\"}]"
+        }
+      ]
+    }
 
 
-    console.log(`Result: ${JSON.stringify(result, null, 2)}`);
+    // console.log(`Result: ${JSON.stringify(result, null, 2)}`);
 
-    // result.intermediateSteps.forEach((step) => {
-    //   if (step.action.tool === "query-sql") {
-    //     response.prompt = prompt;
-    //     response.sqlQuery = step.action.toolInput;
-    //     response.result = JSON.parse(step.observation);
-    //   }
-    // });
+    result.intermediateSteps.forEach((step) => {
+      if (step.action.tool === "query-sql") {
+        response.prompt = prompt;
+        response.sqlQuery = step.action.toolInput;
+        response.sqlQuery = response.sqlQuery.replace(/\\/g, '').replace(/"/g, '');
+        try {
+          const observation = JSON.parse(step.observation);
+          if (Array.isArray(observation) && observation.every(obj => typeof obj === 'object')) {
+            response.result = observation;
+          }
+        } catch (error) {
+          // console.log(error);
+        }
+      }
+    });
 
     // console.log(
     //   `Intermediate steps ${JSON.stringify(result.intermediateSteps, null, 2)}`
