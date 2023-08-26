@@ -66,7 +66,7 @@ app.get("/api/query", async (req, res) => {
   try {
     const result = await executor.call({ input: prompt });
     
-    
+
     // const result = {
     //   "output": "[{\"id\":1,\"name\":\"test\",\"email\":\"test@gmail.com\"},{\"id\":3,\"name\":\"test\",\"email\":\"test2@gmail.com\"},{\"id\":4,\"name\":\"hassan\",\"email\":\"hassan@gmail.com\"}]",
     //   "intermediateSteps": [
@@ -108,17 +108,17 @@ app.get("/api/query", async (req, res) => {
 
     console.log(`Result: ${JSON.stringify(result, null, 2)}`);
 
-    result.intermediateSteps.forEach((step) => {
-      if (step.action.tool === "query-sql") {
-        response.prompt = prompt;
-        response.sqlQuery = step.action.toolInput;
-        response.result = JSON.parse(step.observation);
-      }
-    });
+    // result.intermediateSteps.forEach((step) => {
+    //   if (step.action.tool === "query-sql") {
+    //     response.prompt = prompt;
+    //     response.sqlQuery = step.action.toolInput;
+    //     response.result = JSON.parse(step.observation);
+    //   }
+    // });
 
-    console.log(
-      `Intermediate steps ${JSON.stringify(result.intermediateSteps, null, 2)}`
-    );
+    // console.log(
+    //   `Intermediate steps ${JSON.stringify(result.intermediateSteps, null, 2)}`
+    // );
 
     res.json(response);
   } catch (e) {
