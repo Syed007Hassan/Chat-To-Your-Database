@@ -66,6 +66,7 @@ app.get("/api/query", async (req, res) => {
   try {
     const result = await executor.call({ input: prompt });
     
+    
     // const result = {
     //   "output": "[{\"id\":1,\"name\":\"test\",\"email\":\"test@gmail.com\"},{\"id\":3,\"name\":\"test\",\"email\":\"test2@gmail.com\"},{\"id\":4,\"name\":\"hassan\",\"email\":\"hassan@gmail.com\"}]",
     //   "intermediateSteps": [
