@@ -13,9 +13,18 @@ import { AiModule } from './ai/ai.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'sqlite',
+    //   database: './src/data/northwind.db',
+    // }),
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: './src/data/northwind.db',
+      type: "postgres",
+      host: "localhost",
+      database: "dvdrental",
+      port: 5432,
+      username: "postgres",
+      password: "fast",
+      schema: "public",
     }),
     AiModule,
     // MongooseModule.forRoot(process.env.MONGODB_URI),

@@ -8,7 +8,7 @@ export class AiController {
     constructor(private readonly aiService: AiService){}
 
     @Get('chat/:prompt')
-    async chat(@Param('prompt') prompt: string){
+    async chat(@Param('prompt') prompt: string): Promise<{success:boolean, data?: AiResponse, message?: string}>{
         try {
             const aiResponse: AiResponse = await this.aiService.chat(prompt);
             // console.log(aiResponse);
