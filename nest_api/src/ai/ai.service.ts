@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { OpenAI } from 'langchain';
 // import { createSqlAgent, SqlToolkit } from "langchain/agents/toolkits/sql";
-// import { AiResponse } from './dto/ai-response.dto';
+import { AiResponse } from './dto/ai-response.dto';
 import { SqlDatabase } from 'langchain/sql_db';
 import { DataSource } from 'typeorm';
 import { result } from './constants/results';
@@ -27,6 +27,8 @@ export class AiService implements OnModuleInit {
             temperature: 0,
         });
         console.log('my model' + JSON.stringify(this.model));
+
+        console.log(db);
 
         // this.toolkit = new SqlToolkit(db);
 
