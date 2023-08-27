@@ -1,4 +1,35 @@
-export const result = {
+export const RESULT = {
+  "output": "The countries with customers in the database are Germany, Mexico, UK, Sweden, France, Spain, Canada, Argentina, Switzerland, and Brazil.",
+  "intermediateSteps": [
+    {
+      "action": {
+        "tool": "list-tables-sql",
+        "toolInput": "",
+        "log": "Action: list-tables-sql\nAction Input: \"\""
+      },
+      "observation": "Categories, CustomerCustomerDemo, CustomerDemographics, Customers, EmployeeTerritories, Order Details, Orders, Products, Regions, Shippers, Suppliers, Territories, Employees"
+    },
+    {
+      "action": {
+        "tool": "info-sql",
+        "toolInput": "Customers",
+        "log": " I should look at the Customers table to see what columns I can query.\nAction: info-sql\nAction Input: \"Customers\""
+      },
+      "observation": "CREATE TABLE Customers (\nCustomerID TEXT , CompanyName TEXT , ContactName TEXT , ContactTitle TEXT , Address TEXT , City TEXT , Region TEXT , PostalCode TEXT , Country TEXT , Phone TEXT , Fax TEXT ) \nSELECT * FROM \"Customers\" LIMIT 3;\n CustomerID CompanyName ContactName ContactTitle Address City Region PostalCode Country Phone Fax\n ALFKI Alfreds Futterkiste Maria Anders Sales Representative Obere Str. 57 Berlin Western Europe 12209 Germany 030-0074321 030-0076545\n ANATR Ana Trujillo Emparedados y helados Ana Trujillo Owner Avda. de la Constitución 2222 México D.F. Central America 05021 Mexico (5) 555-4729 (5) 555-3745\n ANTON Antonio Moreno Taquería Antonio Moreno Owner Mataderos  2312 México D.F. Central America 05023 Mexico (5) 555-3932 null\n"
+    },
+    {
+      "action": {
+        "tool": "query-sql",
+        "toolInput": "SELECT DISTINCT Country FROM Customers LIMIT 10;",
+        "log": " I should query the Customers table for customers with respect to distinct country.\nAction: query-sql\nAction Input: SELECT DISTINCT Country FROM Customers LIMIT 10;"
+      },
+      "observation": "[{\"Country\":\"Germany\"},{\"Country\":\"Mexico\"},{\"Country\":\"UK\"},{\"Country\":\"Sweden\"},{\"Country\":\"France\"},{\"Country\":\"Spain\"},{\"Country\":\"Canada\"},{\"Country\":\"Argentina\"},{\"Country\":\"Switzerland\"},{\"Country\":\"Brazil\"}]"
+    }
+  ]
+}
+
+
+export const result2 = {
     prompt: "get me the orders where customer id is not null ",
     sqlQuery: "SELECT * FROM Orders WHERE CustomerID IS NOT NULL LIMIT 10;",
     result: [
