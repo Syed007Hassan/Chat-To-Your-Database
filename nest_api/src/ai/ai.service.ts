@@ -20,8 +20,6 @@ export class AiService implements OnModuleInit {
       appDataSource: this.dataSource,
     });
 
-    console.log('db', db);
-
     this.model = new OpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY,
       temperature: 0,
