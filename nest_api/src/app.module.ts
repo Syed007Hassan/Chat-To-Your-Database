@@ -15,10 +15,6 @@ import { AiModule } from './ai/ai.module';
       isGlobal: true,
       envFilePath: `.env`,
     }),
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: './src/data/northwind.db',
-    }),
     // below is way to use async config service to get db name from .env file
     TypeOrmModule.forRootAsync({
       useFactory: async (config: ConfigService) => ({
@@ -33,6 +29,10 @@ import { AiModule } from './ai/ai.module';
         logging: true,
       }),
       inject: [ConfigService],
+    }),
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: './src/data/northwind.db',
     }),
     AiModule,
     // MongooseModule.forRoot(process.env.MONGODB_URI),
