@@ -6,6 +6,8 @@ import { createSqlAgent, SqlToolkit } from "langchain/agents/toolkits/sql";
 import { DataSource } from "typeorm";
 import { configDotenv } from "dotenv";
 import { SQL_PREFIX, SQL_SUFFIX } from "./prompt-design.js";
+import sqliteConnection from "./config/sqliteConnection.js";
+import postgresConnection from "./config/postgresConnection.js";
 
 
 // Load configuration
@@ -20,18 +22,9 @@ try {
 const app = express();
 app.use(cors());
 
-// Create database connection
-const dataSource = new DataSource({
-  type: "sqlite",
-  database: "./data/northwind.db",
-  // type: "postgres",
-  // host: "localhost",
-  // database: "mydb2",
-  // port: 5432,
-  // username: "hassan",
-  // password: "fast",
-  // schema: "public",
-});
+// Can Provide any dataSource here
+const dataSource = postgresConnection;
+
 
 const db = await SqlDatabase.fromDataSourceParams({
   appDataSource: dataSource,
@@ -66,6 +59,7 @@ app.get("/api/query", async (req, res) => {
   try {
     // const result = await executor.call({ input: prompt });
     
+    //FOR TESTING PURPOSES ONLY
 
     const result = {
       "output": "The countries with customers in the database are Germany, Mexico, UK, Sweden, France, Spain, Canada, Argentina, Switzerland, and Brazil.",
@@ -98,8 +92,6 @@ app.get("/api/query", async (req, res) => {
     }
 
 
-    // console.log(`Result: ${JSON.stringify(result, null, 2)}`);
-
     result.intermediateSteps.forEach((step) => {
       if (step.action.tool === "query-sql") {
         response.prompt = prompt;
@@ -116,9 +108,6 @@ app.get("/api/query", async (req, res) => {
       }
     });
 
-    // console.log(
-    //   `Intermediate steps ${JSON.stringify(result.intermediateSteps, null, 2)}`
-    // );
 
     res.json(response);
   } catch (e) {
@@ -128,10 +117,11 @@ app.get("/api/query", async (req, res) => {
     res.status(500).json(response);
   }
 
-  // await datasource.destroy();
+  await datasource.destroy();
 });
 
 // Start server
 app.listen(5000, () => {
   console.log("Server started on port 5000");
+  console.log(db)
 });

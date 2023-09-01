@@ -1,7 +1,8 @@
-import { DataSourceOptions } from "typeorm";
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
+import { DataSource } from "typeorm";
 
-const postgresConnectionOptions = {
+
+// Create Postgres database connection
+const postgresConnection = new DataSource({
   type: "postgres",
   host: "localhost",
   database: "mydb2",
@@ -9,17 +10,7 @@ const postgresConnectionOptions = {
   username: "hassan",
   password: "fast",
   schema: "public",
-} 
-
-// const PostgresConnectionOptions = {
-//   type: "postgres",
-//   host: "localhost",
-//   database: "mydb2",
-//   port: 5432,
-//   username: "hassan",
-//   password: "fast",
-//   schema: "public",
-// }
+});
 
 
-export default PostgresConnectionOptions;
+export default postgresConnection;
