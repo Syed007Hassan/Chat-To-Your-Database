@@ -23,7 +23,7 @@ const app = express();
 app.use(cors());
 
 // Can Provide any dataSource here
-const dataSource = postgresConnection;
+const dataSource = sqliteConnection;
 
 
 const db = await SqlDatabase.fromDataSourceParams({

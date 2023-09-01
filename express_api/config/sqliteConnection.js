@@ -4,7 +4,7 @@ import { DataSource } from "typeorm";
 // Create Sqlite database connection
 const sqliteConnection = new DataSource({
   type: "sqlite",
-  database: "../data/northwind.db",
+  database: "./data/northwind.db",
  
 });
 
