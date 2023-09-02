@@ -6,6 +6,7 @@ import { SqlDatabase } from 'langchain/sql_db';
 import { DataSource } from 'typeorm';
 import { RESULT } from './constants/results';
 import { SQL_SUFFIX, SQL_PREFIX } from './constants/prompt';
+import { SqliteDataSource, PostgreSqlDataSource } from 'ormConfig';
 
 @Injectable()
 export class AiService implements OnModuleInit {
@@ -13,12 +14,18 @@ export class AiService implements OnModuleInit {
   private model: OpenAI;
   private toolkit: SqlToolkit;
 
-  // cannot pass db instance explicitly
-  constructor(private dataSource: DataSource) {}
+  constructor(
+    private postgresDataSource: DataSource,
+    private sqliteDataSource: DataSource,
+  ) {}
 
   async onModuleInit() {
-    const db = await SqlDatabase.fromDataSourceParams({
-      appDataSource: this.dataSource,
+    const postgresDb = await SqlDatabase.fromDataSourceParams({
+      appDataSource: this.postgresDataSource,
+    });
+
+    const sqliteDb = await SqlDatabase.fromDataSourceParams({
+      appDataSource: this.sqliteDataSource,
     });
 
     this.model = new OpenAI({
@@ -26,7 +33,7 @@ export class AiService implements OnModuleInit {
       temperature: 0,
     });
 
-    this.toolkit = new SqlToolkit(db);
+    this.toolkit = new SqlToolkit(postgresDb);
 
     this.executor = createSqlAgent(this.model, this.toolkit, {
       topK: 10,

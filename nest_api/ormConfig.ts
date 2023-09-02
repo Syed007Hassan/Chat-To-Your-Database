@@ -1,8 +1,8 @@
-import dotenv from 'dotenv';
+import { configDotenv } from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 
-dotenv.config();
+configDotenv();
 
 export const PostgreSqlDataSource = TypeOrmModule.forRootAsync({
   name: 'postgres',
