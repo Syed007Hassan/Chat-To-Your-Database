@@ -13,6 +13,7 @@ export class AiService implements OnModuleInit {
   private model: OpenAI;
   private toolkit: SqlToolkit;
 
+  // cannot pass db instance explicitly
   constructor(private dataSource: DataSource) {}
 
   async onModuleInit() {
@@ -35,7 +36,7 @@ export class AiService implements OnModuleInit {
   }
 
   async chat(prompt: string): Promise<AiResponse> {
-    let aiResponse: AiResponse = new AiResponse();
+    let aiResponse = new AiResponse();
 
     try {
       const result = await this.executor.call({ input: prompt });
