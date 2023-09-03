@@ -5,7 +5,6 @@ import { PostgreSqlDataSource, SqliteDataSource } from '../../ormConfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [PostgreSqlDataSource],
   controllers: [AiController],
   providers: [AiService],
 })

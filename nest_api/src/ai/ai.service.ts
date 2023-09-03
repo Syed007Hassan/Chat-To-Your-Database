@@ -6,7 +6,7 @@ import { SqlDatabase } from 'langchain/sql_db';
 import { DataSource } from 'typeorm';
 import { RESULT } from './constants/results';
 import { SQL_SUFFIX, SQL_PREFIX } from './constants/prompt';
-import { SqliteDataSource, PostgreSqlDataSource } from 'ormConfig';
+import { InjectDataSource } from '@nestjs/typeorm';
 
 @Injectable()
 export class AiService implements OnModuleInit {
@@ -15,8 +15,8 @@ export class AiService implements OnModuleInit {
   private toolkit: SqlToolkit;
 
   constructor(
-    private postgresDataSource: DataSource,
-    private sqliteDataSource: DataSource,
+    @InjectDataSource('postgres') private postgresDataSource: DataSource,
+    @InjectDataSource('sqlite') private sqliteDataSource: DataSource,
   ) {}
 
   async onModuleInit() {
@@ -27,6 +27,9 @@ export class AiService implements OnModuleInit {
     const sqliteDb = await SqlDatabase.fromDataSourceParams({
       appDataSource: this.sqliteDataSource,
     });
+
+    console.log(postgresDb);
+    console.log(sqliteDb);
 
     this.model = new OpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY,
