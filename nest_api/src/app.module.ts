@@ -3,7 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { PostgreSqlDataSource, SqliteDataSource } from '../ormConfig';
+import {
+  PostgreSqlDataSource,
+  SqliteDataSource,
+  MssqlDataSource,
+} from '../ormConfig';
 
 // import { MongooseModule } from '@nestjs/mongoose';
 // import { AuthModule } from './auth/auth.module';
@@ -18,6 +22,7 @@ import { AiModule } from './ai/ai.module';
     }),
     PostgreSqlDataSource,
     SqliteDataSource,
+    MssqlDataSource,
     AiModule,
     // MongooseModule.forRoot(process.env.MONGODB_URI),
     // AuthModule,
