@@ -24,7 +24,7 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   * Next js --> Frontend
   * Express API / Nest API --> Backend
   * Sqlite / Postgres --> Backend
-  * Open AI LLM Model  --> Generative AI
+  * Open AI LLM Model with Langchain Agent  --> Generative AI
 
 ## Installing the app
 
