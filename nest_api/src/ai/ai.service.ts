@@ -7,6 +7,9 @@ import { DataSource } from 'typeorm';
 import { RESULT } from './constants/results';
 import { SQL_SUFFIX, SQL_PREFIX } from './constants/prompt';
 import { InjectDataSource } from '@nestjs/typeorm';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { ChatHistory } from './entities/chat.history.entity';
 
 @Injectable()
 export class AiService implements OnModuleInit {
@@ -17,6 +20,7 @@ export class AiService implements OnModuleInit {
   constructor(
     @InjectDataSource('postgres') private postgresDataSource: DataSource,
     @InjectDataSource('sqlite') private sqliteDataSource: DataSource,
+    @InjectModel('ChatHistory') private readonly userModel: Model<ChatHistory>,
   ) {}
 
   async onModuleInit() {
@@ -46,7 +50,10 @@ export class AiService implements OnModuleInit {
     let aiResponse = new AiResponse();
 
     try {
-      const result = await this.executor.call({ input: prompt });
+      // const result = await this.executor.call({ input: prompt });
+
+      // dummy result
+      const result = RESULT;
 
       result.intermediateSteps.forEach((step) => {
         if (step.action.tool === 'query-sql') {
@@ -69,13 +76,13 @@ export class AiService implements OnModuleInit {
         }
       });
 
-      console.log(
-        `Intermediate steps ${JSON.stringify(
-          result.intermediateSteps,
-          null,
-          2,
-        )}`,
-      );
+      // console.log(
+      //   `Intermediate steps ${JSON.stringify(
+      //     result.intermediateSteps,
+      //     null,
+      //     2,
+      //   )}`,
+      // );
 
       return aiResponse;
     } catch (e) {
