@@ -26,16 +26,3 @@ export const SqliteDataSource = TypeOrmModule.forRootAsync({
     database: './data/northwind.db',
   }),
 });
-
-export const MssqlDataSource = TypeOrmModule.forRootAsync({
-  name: 'mssql',
-  useFactory: async (config: ConfigService) => ({
-    type: 'mssql',
-    host: 'localhost',
-    port: 1433,
-    username: 'syed-hassan',
-    password: '',
-    database: 'Elegant motors',
-  }),
-  inject: [ConfigService],
-});
