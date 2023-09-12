@@ -17,7 +17,6 @@ export class AiService implements OnModuleInit {
   constructor(
     @InjectDataSource('postgres') private postgresDataSource: DataSource,
     @InjectDataSource('sqlite') private sqliteDataSource: DataSource,
-    @InjectDataSource('mssql') private mssqlDataSource: DataSource,
   ) {}
 
   async onModuleInit() {
@@ -28,12 +27,6 @@ export class AiService implements OnModuleInit {
     const sqliteDb = await SqlDatabase.fromDataSourceParams({
       appDataSource: this.sqliteDataSource,
     });
-
-    const mssqlDb = await SqlDatabase.fromDataSourceParams({
-      appDataSource: this.mssqlDataSource,
-    });
-
-    console.log('ms sql db', mssqlDb);
 
     this.model = new OpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY,
