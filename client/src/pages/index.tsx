@@ -7,7 +7,8 @@ import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
 import { DarkThemeToggle, Flowbite } from "flowbite-react";
-
+import Sidebar from "@/components/Sidebar";
+import Navbar from "@/components/Navbar";
 interface ChatResponse {
   prompt: string;
   sqlQuery: string;
@@ -27,13 +28,13 @@ export default function Home() {
     setPrompt(prompt);
 
     try {
-      // const response = await axios.get(
-      //   // `http://localhost:5000/api/query?prompt=${encodeURIComponent(prompt)}` // for express
-      //   `http://localhost:5000/api/ai/chat/prompt=${encodeURIComponent(prompt)}`
-      // );
+    //   const response = await axios.get(
+    //     // `http://localhost:5000/api/query?prompt=${encodeURIComponent(prompt)}` // for express
+    //     `http://localhost:5000/api/ai/chat/prompt=${encodeURIComponent(prompt)}`
+    //   );
 
-      // const data = response.data; // for express
-      // const {data} = response.data;
+    //   // const data = response.data; // for express
+    //   const {data} = response.data;
 
       const data = {
         prompt: "get me the orders where customer id is not null ",
@@ -237,26 +238,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flowbite>
-      <main className="text-slate-100 h-full">
-        <section className="flex flex-col mx-auto max-w-7xl h-full justify-between">
-          <div className="flex flex-col flex-1">
-            <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold mt-6 mb-6 text-slate-800 dark:text-slate-300">
-                Chat to your database
-              </h1>
-              <div className="flex flex-row gap-4">
-              <DarkThemeToggle className=" text-2xl text-slate-800 dark:text-slate-300"/>
-              <a
-                href="https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL"
-                target="_blank"
-                rel="noreferrer"
-                className="flex"
-              >
-                <GithubIcon/>
-                {/* <h4 className="text-slate-300 ml-4">v0.1.0</h4> */}
-              </a>
-              </div>
-            </div>
+      <main className="text-slate-100 overflow-hidden w-full h-full relative flex z-0">
+      <Navbar />
+      <Sidebar />
+        <section className="flex flex-col p-6 mt-8 w-full h-full justify-between">
+          <div className="mt-8 flex flex-col flex-1">
+
             {response?.error && response?.error !== "" && (
               <p className="rounded-xl bg-red-500 text-white p-6 mb-8">
                 {response.error}
