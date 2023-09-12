@@ -13,6 +13,8 @@
 
 # Chat to your database
 
+Natural language querying allows users to interact with databases more intuitively and efficiently. By leveraging the power of LangChain, SQL Agents, and OpenAI’s Large Language Models (LLMs) like ChatGPT, we have created an application that enable users to query databases using natural language
+
 This is an experimental app to test the abilities of LLMs to query SQL databases using [SQL Agents](https://github.com/Syed007Hassan/Langchain) provided by Langchain.
 To use it, you should add your OPENAI_API_KEY to the .env file in api folder.
 
