@@ -1,7 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { OpenAI } from 'langchain/llms/openai';
 import { createSqlAgent, SqlToolkit } from 'langchain/agents/toolkits/sql';
-import { AiResponse } from './dto/ai-response.dto';
 import { SqlDatabase } from 'langchain/sql_db';
 import { DataSource } from 'typeorm';
 import { RESULT } from './constants/results';
@@ -10,6 +9,8 @@ import { InjectDataSource } from '@nestjs/typeorm';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { QueryHistory } from './entities/chat.history.entity';
+import { AiResponse } from './dto/ai-response.dto';
+import { ChatHistoryResponseDto } from './dto/chatHistory-response.dto';
 
 @Injectable()
 export class AiService implements OnModuleInit {
@@ -100,5 +101,24 @@ export class AiService implements OnModuleInit {
 
       return aiResponse;
     }
+  }
+
+  async getAllChatHistory(): Promise<Array<ChatHistoryResponseDto>> {
+    const chatHistory: Array<QueryHistory> = await this.chatHistoryModel.find();
+
+    if (!chatHistory) {
+      return [];
+    }
+
+    const chatHistoryResponse: Array<ChatHistoryResponseDto> = chatHistory.map(
+      (history) => {
+        const chatHistoryResponseDto = new ChatHistoryResponseDto();
+        chatHistoryResponseDto.prompt = history.prompt;
+        chatHistoryResponseDto.sqlQuery = history.sqlQuery;
+        chatHistoryResponseDto.result = history.queryResult;
+        return chatHistoryResponseDto;
+      },
+    );
+    return chatHistoryResponse;
   }
 }
