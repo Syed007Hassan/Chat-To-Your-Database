@@ -1,15 +1,18 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type ChatHistoryDocument = ChatHistory & Document;
+export type QueryHistoryDocument = QueryHistory & Document;
 
 @Schema()
-export class ChatHistory {
+export class QueryHistory {
   @Prop({ required: true })
-  promptQuery: string;
+  prompt: string;
 
   @Prop({ required: true })
-  promptResult: string;
+  sqlQuery: string;
+
+  @Prop({ required: true })
+  queryResult: Array<any>;
 }
 
-export const ChatHistorySchema = SchemaFactory.createForClass(ChatHistory);
+export const QueryHistorySchema = SchemaFactory.createForClass(QueryHistory);

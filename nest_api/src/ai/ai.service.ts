@@ -9,7 +9,7 @@ import { SQL_SUFFIX, SQL_PREFIX } from './constants/prompt';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { ChatHistory } from './entities/chat.history.entity';
+import { QueryHistory } from './entities/chat.history.entity';
 
 @Injectable()
 export class AiService implements OnModuleInit {
@@ -20,7 +20,8 @@ export class AiService implements OnModuleInit {
   constructor(
     @InjectDataSource('postgres') private postgresDataSource: DataSource,
     @InjectDataSource('sqlite') private sqliteDataSource: DataSource,
-    @InjectModel('ChatHistory') private readonly userModel: Model<ChatHistory>,
+    @InjectModel('ChatHistory')
+    private readonly chatHistoryModel: Model<QueryHistory>,
   ) {}
 
   async onModuleInit() {
@@ -83,6 +84,14 @@ export class AiService implements OnModuleInit {
       //     2,
       //   )}`,
       // );
+
+      const chatHistory = new this.chatHistoryModel({
+        prompt: aiResponse.prompt,
+        sqlQuery: aiResponse.sqlQuery,
+        queryResult: aiResponse.result,
+      });
+
+      await chatHistory.save();
 
       return aiResponse;
     } catch (e) {
