@@ -38,7 +38,7 @@ export default function Home() {
     try {
       const response = await axios.get(
         // `http://localhost:5000/api/query?prompt=${encodeURIComponent(prompt)}` // for express
-        `http://localhost:5000/api/ai/chat/prompt=${encodeURIComponent(prompt)}`
+        `http://localhost:5000/api/ai/chat?prompt=${encodeURIComponent(prompt)}`
       );
 
       // const data = response.data; // for express
