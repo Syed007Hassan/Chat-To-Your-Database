@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { QueryHistory } from "@/interfaces/index";
-
-interface SidebarProps {
-  chatHistory: QueryHistory[];
-  selectedQueryHistory: QueryHistory | null;
-  setSelectedQueryHistory: (history: QueryHistory) => void;
-}
+import { SidebarProps } from "@/interfaces/index";
 
 const Sidebar = ({ chatHistory, selectedQueryHistory, setSelectedQueryHistory }: SidebarProps) => {
   
