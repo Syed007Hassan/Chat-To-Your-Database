@@ -1,41 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { QueryHistory } from "@/interfaces/index";
 
-export interface QueryHistory {
-  id: string;
-  prompt: string;
-  sqlQuery: string;
-  queryResult: Array<any>;
+interface SidebarProps {
+  chatHistory: QueryHistory[];
+  selectedQueryHistory: QueryHistory | null;
+  setSelectedQueryHistory: (history: QueryHistory) => void;
 }
 
-export interface QueryHistories {
-  queryHistories: QueryHistory[];
-}
-
-const Sidebar = () => {
-  const [selectedQueryHistory, setSelectedQueryHistory] =
-    useState<QueryHistory | null>(null);
-  const [chatHistory, setChatHistory] = useState<QueryHistory[]>([]);
-
-  useEffect(() => {
-    const fetchChatHistory = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/api/ai/getAllChatHistory"
-        );
-        setChatHistory(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchChatHistory();
-  }, []);
-
-  useEffect(() => {
-    // Do something when the selected query history changes
-  }, [selectedQueryHistory]);
-
+const Sidebar = ({ chatHistory, selectedQueryHistory, setSelectedQueryHistory }: SidebarProps) => {
+  
   return (
     <aside
       id="logo-sidebar"
@@ -44,21 +18,26 @@ const Sidebar = () => {
     >
       <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-slate-900">
         <ul className="space-y-2 font-medium">
-          {chatHistory.map((history) => (
-            <li key={history.id}>
+          {chatHistory && chatHistory.length
+          ?
+          chatHistory.map((history) => (
+            <li key={history._id}>
               <a
                 href="#"
-                className={`flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                  selectedQueryHistory?.id === history.id
-                    ? "bg-gray-100 dark:bg-gray-700"
+                className={`flex items-center p-2 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-700 ${
+                  selectedQueryHistory?._id == history._id
+                    ? "bg-slate-300 dark:bg-slate-700"
                     : ""
                 }`}
-                onClick={() => setSelectedQueryHistory(history)}
+                onClick={() => {setSelectedQueryHistory(history)}}
               >
-                <span className="ml-3">{history.prompt}</span>
+                <span className="ml-3 text-slate-800 dark:text-slate-300">{history.prompt.length > 20 ? history.prompt.slice(0,20) + '...' : history.prompt}</span>
               </a>
             </li>
-          ))}
+          ))
+          :
+          <li>No chat history available</li>
+          }
         </ul>
       </div>
     </aside>
