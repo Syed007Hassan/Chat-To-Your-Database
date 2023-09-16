@@ -113,6 +113,7 @@ export class AiService implements OnModuleInit {
     const chatHistoryResponse: Array<ChatHistoryResponseDto> = chatHistory.map(
       (history) => {
         const chatHistoryResponseDto = new ChatHistoryResponseDto();
+        chatHistoryResponseDto._id = history._id;
         chatHistoryResponseDto.prompt = history.prompt;
         chatHistoryResponseDto.sqlQuery = history.sqlQuery;
         chatHistoryResponseDto.result = history.queryResult;

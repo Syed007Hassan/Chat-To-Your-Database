@@ -6,6 +6,9 @@ export type QueryHistoryDocument = QueryHistory & Document;
 @Schema()
 export class QueryHistory {
   @Prop({ required: true })
+  _id: string;
+
+  @Prop({ required: true })
   prompt: string;
 
   @Prop({ required: true })
