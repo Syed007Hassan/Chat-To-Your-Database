@@ -2,35 +2,43 @@ import ChatForm from "@/components/ChatForm";
 import DataTable from "@/components/DataTable";
 import Preloader from "@/components/Preloader";
 import SqlViewer from "@/components/SqlViewer";
-import GithubIcon from "@/components/icons/GithubIcon";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { DarkThemeToggle, Flowbite } from "flowbite-react";
+import {Flowbite } from "flowbite-react";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
-interface ChatResponse {
-  prompt: string;
-  sqlQuery: string;
-  result: Record<string, string | boolean | number>[];
-  error: string;
-}
+import { QueryHistory } from "@/interfaces/index";
+import { SidebarProps } from "@/interfaces/index";
+import { ChatResponse } from "@/interfaces/index";
+
+
 
 export default function Home() {
   const [response, setResponse] = useState<ChatResponse | null>(null);
   const [waitingResponse, setWaitingResponse] = useState(false);
   const [firstRun, setFirstRun] = useState(true);
   const [prompt, setPrompt] = useState("");
+  const [selectedQueryHistory, setSelectedQueryHistory] =
+  useState<QueryHistory | null>(null);
+  const [chatHistory, setChatHistory] = useState<QueryHistory[]>([]);
+
+  const [sidebarProps, setSidebarProps] = useState<SidebarProps>({
+    chatHistory: [],
+    selectedQueryHistory: null,
+    setSelectedQueryHistory: () => {},
+  });
 
   const onPrompt = async (prompt: string) => {
     setFirstRun(false);
     setWaitingResponse(true);
     setPrompt(prompt);
 
+
     try {
       const response = await axios.get(
         // `http://localhost:5000/api/query?prompt=${encodeURIComponent(prompt)}` // for express
-        `http://localhost:5000/api/ai/chat/prompt=${encodeURIComponent(prompt)}`
+        `http://localhost:5000/api/ai/chat?prompt=${encodeURIComponent(prompt)}`
       );
 
       // const data = response.data; // for express
@@ -227,6 +235,32 @@ export default function Home() {
     return "-- No prompt yet";
   };
 
+
+  useEffect(() => {
+    const fetchChatHistory = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/ai/getAllChatHistory"
+        );
+        setChatHistory(response.data.data);
+        // console.log(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchChatHistory();
+  }, [response]);
+
+  useEffect(() => {
+    setSidebarProps({chatHistory,selectedQueryHistory,setSelectedQueryHistory});
+  },[chatHistory]);
+
+  useEffect(() => {
+    setSidebarProps({chatHistory,selectedQueryHistory,setSelectedQueryHistory});
+  }, [selectedQueryHistory]);
+
+
   return (
     <>
       <Head>
@@ -238,7 +272,7 @@ export default function Home() {
       <Flowbite>
         <main className="text-slate-100 overflow-hidden w-full h-full relative flex z-0">
           <Navbar />
-          <Sidebar />
+          <Sidebar {...sidebarProps} />
           <section className="flex flex-col p-6 mt-8 w-full h-full justify-between">
             <div className="mt-8 flex flex-col flex-1">
               {response?.error && response?.error !== "" && (
