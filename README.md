@@ -9,7 +9,7 @@
 - [Getting Started](#getting-started)
     - [Installing the app](#installing-the-app)
     - [Running the app](#running-the-app)
-
+    - [Add Env file](#add-env-file)
 - [Follow Up](#follow-up)
 
 # Introduction
@@ -56,6 +56,20 @@ https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/26
 
 ## Getting Started
 
+### Add Env file 
+
+In nest_api folder, add a **.env** file.
+
+```bash!
+DB_NAME=
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=
+DB_PASSWORD=
+DB_SCHEMA=
+OPENAI_API_KEY=sk-xxxx
+MONGODB_URI=
+```
 ### Installing the APP
 
 ```bash!
@@ -77,8 +91,22 @@ nodemon or npm run start
 npm run dev
 ```
 
-## Follow Up
-**Currently I have set SQLite and PostgreSQL connections only, but using TypeORM you can set any Database. To further extend this project, fork this repo and make PRs.**
+## Contribution Guidelines
+
+Contributions to the this project are highly encouraged and appreciated. To help us maintain a high level of quality, please follow these contribution guidelines:
+
+- Fork the repository to your GitHub account.
+- Make changes and improvements in your forked repository.
+- Test your changes thoroughly.
+- Create a well-explained pull request detailing the changes you made and the problems they solve.
+- Ensure your pull requests comply with the coding standards and styles followed in the project.
+- Be responsive to feedback and iterate on your contributions, if necessary.
+- Upon review, your pull request will go through a validation process by the project maintainers. Once approved, your changes will be merged into the main branch, and you will become a contributor to the NextJs Langchain Agents SQL project. We appreciate your efforts in making this project better and more valuable.
+
+Please follow the contribution guidelines outlined in the [Contributing.md](contribution.md) file in this repository, to make sure that your contributions align with the project standards.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
 
 
 
