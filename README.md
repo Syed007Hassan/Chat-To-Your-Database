@@ -7,21 +7,19 @@
     - [Sample database PostgreSQL](#sample-database-postgresql)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+    - [Add Env file](#add-env-file)
     - [Installing the app](#installing-the-app)
     - [Running the app](#running-the-app)
-    - [Add Env file](#add-env-file)
-- [Follow Up](#follow-up)
+- [Contribution Guidelines](#contribution-guidelines)
+- [License](#license)
 
 # Introduction
 
-Natural language querying allows users to interact with databases more intuitively and efficiently. By leveraging the power of LangChain, SQL Agents, and OpenAI’s Large Language Models (LLMs) like ChatGPT, we have created an application that enables users to query databases using NLP. All it needs a SQL based schema, and it can perform any read and write action to that schema.
+Natural language querying allows users to interact with databases more intuitively and efficiently. By leveraging the power of LangChain, SQL Agents, and OpenAI’s Large Language Models (LLMs) like ChatGPT, we have created an application that enables users to query databases using NLP. All it needs a SQL-based schema, and it can perform any read and write action to that schema.
 
 This is an experimental app to test the abilities of LLMs to query SQL databases using [SQL Agents](https://github.com/Syed007Hassan/Langchain) provided by Langchain.
-To use it, you should add your OPENAI_API_KEY to the .env file in api folder.
+To use it, you should have an OPENAI_API_KEY.
 
-```
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
 ## Features
 - Auto-generate SQL queries from the natural language descriptions
 - Translate SQL queries from one dialect to another
@@ -29,7 +27,7 @@ OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Analyze SQL queries to identify potential problems
 - Optimize the SQL queries that are used to fetch data from the SQL database
 - Analyze the SQL queries that are used in your NextJS application to identify potential problems
-- Displays all the data in the form of table after executing the query on schema
+- Displays all the data in the form of a table after executing the query on a schema
 - Stores the history prompts and the queries generated in No-SQL
 
 ## Examples 
@@ -93,7 +91,7 @@ npm run dev
 
 ## Contribution Guidelines
 
-Contributions to the this project are highly encouraged and appreciated. To help us maintain a high level of quality, please follow these contribution guidelines:
+Contributions to this project are highly encouraged and appreciated. To help us maintain a high level of quality, please follow these contribution guidelines:
 
 - Fork the repository to your GitHub account.
 - Make changes and improvements in your forked repository.
