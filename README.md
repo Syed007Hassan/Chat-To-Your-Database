@@ -103,10 +103,10 @@ Contributions to the this project are highly encouraged and appreciated. To help
 - Be responsive to feedback and iterate on your contributions, if necessary.
 - Upon review, your pull request will go through a validation process by the project maintainers. Once approved, your changes will be merged into the main branch, and you will become a contributor to the NextJs Langchain Agents SQL project. We appreciate your efforts in making this project better and more valuable.
 
-Please follow the contribution guidelines outlined in the [Contributing.md](contribution.md) file in this repository, to make sure that your contributions align with the project standards.
+Please follow the contribution guidelines outlined in the [Contributing.md](./contribution.md) file in this repository, to make sure that your contributions align with the project standards.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](./LICENSE).
 
 
 
