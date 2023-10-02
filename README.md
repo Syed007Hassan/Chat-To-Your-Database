@@ -1,4 +1,13 @@
-# Table Of Contents
+<center>
+
+# NextJs-Langchain-Agents-SQL
+
+</center>
+
+
+![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/c428f51b-bf0c-4960-a873-744567a2f1b3)
+
+## Table Of Contents
 
 - [Introduction](#introduction)
 - [Features](#features)
@@ -13,7 +22,7 @@
 - [Contribution Guidelines](#contribution-guidelines)
 - [License](#license)
 
-# Introduction
+## Introduction
 
 Natural language querying allows users to interact with databases more intuitively and efficiently. By leveraging the power of LangChain, SQL Agents, and OpenAI’s Large Language Models (LLMs) like ChatGPT, we have created an application that enables users to query databases using NLP. All it needs a SQL-based schema, and it can perform any read and write action to that schema.
 
