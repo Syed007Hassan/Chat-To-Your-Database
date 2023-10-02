@@ -83,10 +83,10 @@ npm install
 ### Running the APP
 
 ```bash
-/api
-nodemon or npm run start
+/nest_api
+**npm run start:dev**
 /client
-npm run dev
+**npm run dev**
 ```
 
 ## Contribution Guidelines
