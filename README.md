@@ -1,15 +1,15 @@
 # Table Of Contents
 
 - [Chat to your database](#chat-to-your-database)
-  - [Tech Features](#tech-features)
-  - [Installing the app](#installing-the-app)
-  - [Running the app](#running-the-app)
-  - [Examples](#examples)
+- [Tech Features](#tech-features)
+- [Installing the app](#installing-the-app)
+- [Running the app](#running-the-app)
+- [Examples](#examples)
     - [Sample database SQLite](#sample-database-sqlite)
-      - [See it in action](#see-it-in-action)
+    - [See it in action](#see-it-in-action)
     - [Sample database PostgreSQL](#sample-database-postgresql)
-      - [See it in action](#see-it-in-action-1)
-  - [Follow Up](#follow-up)
+    - [See it in action](#see-it-in-action-1)
+- [Follow Up](#follow-up)
 
 # Chat to your database
 
