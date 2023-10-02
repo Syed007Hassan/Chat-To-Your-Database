@@ -1,12 +1,15 @@
 # Table Of Contents
 
 - [Introduction](#introduction)
-- [Tech Features](#tech-features)
-- [Installing the app](#installing-the-app)
-- [Running the app](#running-the-app)
+- [Features](#features)
 - [Examples](#examples)
     - [Sample database SQLite](#sample-database-sqlite)
     - [Sample database PostgreSQL](#sample-database-postgresql)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+    - [Installing the app](#installing-the-app)
+    - [Running the app](#running-the-app)
+
 - [Follow Up](#follow-up)
 
 # Introduction
@@ -19,33 +22,16 @@ To use it, you should add your OPENAI_API_KEY to the .env file in api folder.
 ```
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+## Features
+- Auto-generate SQL queries from the natural language descriptions
+- Translate SQL queries from one dialect to another
+- Optimize SQL queries to make them run faster
+- Analyze SQL queries to identify potential problems
+- Optimize the SQL queries that are used to fetch data from the SQL database
+- Analyze the SQL queries that are used in your NextJS application to identify potential problems
+- Displays all the data in the form of table after executing the query on schema
+- Stores the history prompts and the queries generated in No-SQL
 
-## Tech Features
-  * Next js --> Frontend
-  * Express API / Nest API --> Backend
-  * Sqlite / Postgres --> Backend
-  * Open AI LLM Model with Langchain Agent  --> Generative AI
-
-## Installing the app
-
-```bash!
-cd api
-npm install
-```
-
-```bash
-cd client
-npm install
-```
-
-## Running the app
-
-```bash
-/api
-nodemon or npm run start
-/client
-npm run dev
-```
 ## Examples 
 
 ### Sample database SQLite
@@ -61,6 +47,35 @@ https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/26
 #### See it in action
 
 ![pg res](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/4c8c94a2-5025-425b-ba5c-19b6036af534)
+
+## Tech Stack
+  * **Frontend**: NextJS 
+  * **Backend**: ExpressJS/NestJS
+  * **Databases**: Sqlite/PostgreSQL/MongoDB
+  * **LLM**: Langchain SQL Agent with Open AI LLM
+
+## Getting Started
+
+### Installing the APP
+
+```bash!
+cd nest_api
+npm install
+```
+
+```bash
+cd client
+npm install
+```
+
+### Running the APP
+
+```bash
+/api
+nodemon or npm run start
+/client
+npm run dev
+```
 
 ## Follow Up
 **Currently I have set SQLite and PostgreSQL connections only, but using TypeORM you can set any Database. To further extend this project, fork this repo and make PRs.**
