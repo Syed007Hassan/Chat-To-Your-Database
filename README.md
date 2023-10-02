@@ -93,9 +93,9 @@ npm install
 
 ```bash
 /nest_api
-**npm run start:dev**
+npm run start:dev
 /client
-**npm run dev**
+npm run dev
 ```
 
 ## Contribution Guidelines
