@@ -19,11 +19,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: nest-docker-postgres
+    container_name: langchain-nest
     environment:
       PORT: ${PORT}
     ports:
-      - '3000:3000'
+      - '5000:5000'
     depends_on:
       - db
     volumes:
