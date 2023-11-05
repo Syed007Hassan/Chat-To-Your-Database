@@ -30,7 +30,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('NestJS LangChain OpenAI API')
-    .setDescription('SqlAgent Configurable OpenAI API that allows you to chat with your database !')
+    .setDescription(
+      'SqlAgent Configurable OpenAI API that allows you to chat with your database !',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
@@ -43,6 +45,6 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(5000);
+  await app.listen(5000 || process.env.PORT);
 }
 bootstrap();

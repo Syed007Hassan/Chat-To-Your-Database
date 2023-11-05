@@ -52,10 +52,10 @@ export class AiService implements OnModuleInit {
     let aiResponse = new AiResponse();
 
     try {
-      // const result = await this.executor.call({ input: prompt });
+      const result = await this.executor.call({ input: prompt });
 
       // dummy result
-      const result = RESULT;
+      // const result = RESULT;
 
       result.intermediateSteps.forEach((step) => {
         if (step.action.tool === 'query-sql') {
