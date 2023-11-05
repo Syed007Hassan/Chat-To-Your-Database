@@ -2,7 +2,9 @@ import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AiService } from './ai.service';
 import { AiResponse } from './dto/ai-response.dto';
 import { ChatHistoryResponseDto } from './dto/chatHistory-response.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('AI')
 @Controller('ai')
 export class AiController {
   constructor(private readonly aiService: AiService) {}
