@@ -5,14 +5,13 @@ import SqlViewer from "@/components/SqlViewer";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {Flowbite } from "flowbite-react";
+import { Flowbite } from "flowbite-react";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import { QueryHistory } from "@/interfaces/index";
 import { SidebarProps } from "@/interfaces/index";
 import { ChatResponse } from "@/interfaces/index";
-
-
+import ModalForTable from "../components/ModalForTable";
 
 export default function Home() {
   const [response, setResponse] = useState<ChatResponse | null>(null);
@@ -20,7 +19,7 @@ export default function Home() {
   const [firstRun, setFirstRun] = useState(true);
   const [prompt, setPrompt] = useState("");
   const [selectedQueryHistory, setSelectedQueryHistory] =
-  useState<QueryHistory | null>(null);
+    useState<QueryHistory | null>(null);
   const [chatHistory, setChatHistory] = useState<QueryHistory[]>([]);
 
   const [sidebarProps, setSidebarProps] = useState<SidebarProps>({
@@ -33,7 +32,6 @@ export default function Home() {
     setFirstRun(false);
     setWaitingResponse(true);
     setPrompt(prompt);
-
 
     try {
       const response = await axios.get(
@@ -235,7 +233,6 @@ export default function Home() {
     return "-- No prompt yet";
   };
 
-
   useEffect(() => {
     const fetchChatHistory = async () => {
       try {
@@ -253,13 +250,20 @@ export default function Home() {
   }, [response]);
 
   useEffect(() => {
-    setSidebarProps({chatHistory,selectedQueryHistory,setSelectedQueryHistory});
-  },[chatHistory]);
+    setSidebarProps({
+      chatHistory,
+      selectedQueryHistory,
+      setSelectedQueryHistory,
+    });
+  }, [chatHistory]);
 
   useEffect(() => {
-    setSidebarProps({chatHistory,selectedQueryHistory,setSelectedQueryHistory});
+    setSidebarProps({
+      chatHistory,
+      selectedQueryHistory,
+      setSelectedQueryHistory,
+    });
   }, [selectedQueryHistory]);
-
 
   return (
     <>
