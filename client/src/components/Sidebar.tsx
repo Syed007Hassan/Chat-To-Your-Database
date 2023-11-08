@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { QueryHistory } from "@/interfaces/index";
 import { SidebarProps } from "@/interfaces/index";
+import React, { useState } from "react";
+import ModalForTable from "../components/ModalForTable";
 
 const Sidebar = ({
   chatHistory,
   selectedQueryHistory,
   setSelectedQueryHistory,
+  setShowModal,
 }: SidebarProps) => {
   return (
     <aside
@@ -45,7 +45,12 @@ const Sidebar = ({
                     />
                   </svg>
 
-                  <span className="ml-3 text-slate-800 dark:text-slate-300">
+                  <span
+                    className="ml-3 text-slate-800 dark:text-slate-300"
+                    onClick={() => {
+                      setShowModal(true);
+                    }}
+                  >
                     {history.prompt.length > 25
                       ? history.prompt.slice(0, 23) + "..."
                       : history.prompt}

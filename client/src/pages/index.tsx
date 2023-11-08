@@ -11,7 +11,7 @@ import Navbar from "@/components/Navbar";
 import { QueryHistory } from "@/interfaces/index";
 import { SidebarProps } from "@/interfaces/index";
 import { ChatResponse } from "@/interfaces/index";
-import ModalForTable from "../components/ModalForTable";
+import ModalForTable from "@/components/ModalForTable";
 
 export default function Home() {
   const [response, setResponse] = useState<ChatResponse | null>(null);
@@ -22,10 +22,13 @@ export default function Home() {
     useState<QueryHistory | null>(null);
   const [chatHistory, setChatHistory] = useState<QueryHistory[]>([]);
 
+  const [showModal, setShowModal] = useState(false);
+
   const [sidebarProps, setSidebarProps] = useState<SidebarProps>({
     chatHistory: [],
     selectedQueryHistory: null,
     setSelectedQueryHistory: () => {},
+    setShowModal: () => {},
   });
 
   const onPrompt = async (prompt: string) => {
@@ -35,11 +38,9 @@ export default function Home() {
 
     try {
       const response = await axios.get(
-        // `http://localhost:5000/api/query?prompt=${encodeURIComponent(prompt)}` // for express
         `http://localhost:5000/api/ai/chat?prompt=${encodeURIComponent(prompt)}`
       );
 
-      // const data = response.data; // for express
       const { data } = response.data;
 
       // const data = {
@@ -254,14 +255,16 @@ export default function Home() {
       chatHistory,
       selectedQueryHistory,
       setSelectedQueryHistory,
+      setShowModal,
     });
-  }, [chatHistory]);
+  }, [chatHistory, selectedQueryHistory]);
 
   useEffect(() => {
     setSidebarProps({
       chatHistory,
       selectedQueryHistory,
       setSelectedQueryHistory,
+      setShowModal,
     });
   }, [selectedQueryHistory]);
 
@@ -277,6 +280,12 @@ export default function Home() {
         <main className="text-slate-100 overflow-hidden w-full h-full relative flex z-0">
           <Navbar />
           <Sidebar {...sidebarProps} />
+          {showModal && (
+            <ModalForTable
+              show={showModal}
+              onClose={() => setShowModal(false)}
+            />
+          )}
           <section className="flex flex-col p-6 mt-8 w-full h-full justify-between">
             <div className="mt-8 flex flex-col flex-1">
               {response?.error && response?.error !== "" && (
