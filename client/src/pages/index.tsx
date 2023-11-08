@@ -5,14 +5,14 @@ import SqlViewer from "@/components/SqlViewer";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {Flowbite } from "flowbite-react";
+import { Flowbite } from "flowbite-react";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import { QueryHistory } from "@/interfaces/index";
 import { SidebarProps } from "@/interfaces/index";
 import { ChatResponse } from "@/interfaces/index";
-
-
+import ModalForTable from "@/components/ModalForTable";
+import config from "@/interfaces/Config";
 
 export default function Home() {
   const [response, setResponse] = useState<ChatResponse | null>(null);
@@ -20,13 +20,16 @@ export default function Home() {
   const [firstRun, setFirstRun] = useState(true);
   const [prompt, setPrompt] = useState("");
   const [selectedQueryHistory, setSelectedQueryHistory] =
-  useState<QueryHistory | null>(null);
+    useState<QueryHistory | null>(null);
   const [chatHistory, setChatHistory] = useState<QueryHistory[]>([]);
+
+  const [showModal, setShowModal] = useState(false);
 
   const [sidebarProps, setSidebarProps] = useState<SidebarProps>({
     chatHistory: [],
     selectedQueryHistory: null,
     setSelectedQueryHistory: () => {},
+    setShowModal: () => {},
   });
 
   const onPrompt = async (prompt: string) => {
@@ -34,14 +37,11 @@ export default function Home() {
     setWaitingResponse(true);
     setPrompt(prompt);
 
-
     try {
       const response = await axios.get(
-        // `http://localhost:5000/api/query?prompt=${encodeURIComponent(prompt)}` // for express
-        `http://localhost:5000/api/ai/chat?prompt=${encodeURIComponent(prompt)}`
+        `${config.baseURl}/ai/chat?prompt=${encodeURIComponent(prompt)}`
       );
 
-      // const data = response.data; // for express
       const { data } = response.data;
 
       // const data = {
@@ -235,7 +235,6 @@ export default function Home() {
     return "-- No prompt yet";
   };
 
-
   useEffect(() => {
     const fetchChatHistory = async () => {
       try {
@@ -253,13 +252,22 @@ export default function Home() {
   }, [response]);
 
   useEffect(() => {
-    setSidebarProps({chatHistory,selectedQueryHistory,setSelectedQueryHistory});
-  },[chatHistory]);
+    setSidebarProps({
+      chatHistory,
+      selectedQueryHistory,
+      setSelectedQueryHistory,
+      setShowModal,
+    });
+  }, [chatHistory, selectedQueryHistory]);
 
   useEffect(() => {
-    setSidebarProps({chatHistory,selectedQueryHistory,setSelectedQueryHistory});
+    setSidebarProps({
+      chatHistory,
+      selectedQueryHistory,
+      setSelectedQueryHistory,
+      setShowModal,
+    });
   }, [selectedQueryHistory]);
-
 
   return (
     <>
@@ -273,6 +281,12 @@ export default function Home() {
         <main className="text-slate-100 overflow-hidden w-full h-full relative flex z-0">
           <Navbar />
           <Sidebar {...sidebarProps} />
+          {showModal && (
+            <ModalForTable
+              show={showModal}
+              onClose={() => setShowModal(false)}
+            />
+          )}
           <section className="flex flex-col p-6 mt-8 w-full h-full justify-between">
             <div className="mt-8 flex flex-col flex-1">
               {response?.error && response?.error !== "" && (
