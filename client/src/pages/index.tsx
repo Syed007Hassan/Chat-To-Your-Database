@@ -12,6 +12,7 @@ import { QueryHistory } from "@/interfaces/index";
 import { SidebarProps } from "@/interfaces/index";
 import { ChatResponse } from "@/interfaces/index";
 import ModalForTable from "@/components/ModalForTable";
+import config from "@/interfaces/Config";
 
 export default function Home() {
   const [response, setResponse] = useState<ChatResponse | null>(null);
@@ -38,7 +39,7 @@ export default function Home() {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/ai/chat?prompt=${encodeURIComponent(prompt)}`
+        `${config.baseURl}/ai/chat?prompt=${encodeURIComponent(prompt)}`
       );
 
       const { data } = response.data;
