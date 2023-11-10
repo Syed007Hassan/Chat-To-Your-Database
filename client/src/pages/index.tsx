@@ -281,11 +281,16 @@ export default function Home() {
         <main className="text-slate-100 overflow-hidden w-full h-full relative flex z-0">
           <Navbar />
           <Sidebar {...sidebarProps} />
-          {showModal && (
-            <ModalForTable
+
+          {showModal && selectedQueryHistory && (
+          <div className="fixed w-full h-full z-50 overflow-auto bg-gray-700/50 flex">
+          <ModalForTable
               show={showModal}
               onClose={() => setShowModal(false)}
+              response={selectedQueryHistory}
+              getSqlViewerContent={() => getSqlViewerContent()}
             />
+          </div>
           )}
           <section className="flex flex-col p-6 mt-8 w-full h-full justify-between">
             <div className="mt-8 flex flex-col flex-1">
@@ -315,7 +320,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mb-12 mt-8">
-              <div className="p-4 bg-slate-900 rounded-xl w-full mb-8">
+              <div className="p-4 bg-slate-900 rounded-xl w-full mb-8 scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg">
                 <SqlViewer content={getSqlViewerContent()} />
               </div>
               <div className="flex rounded-2xl flex-col relative">

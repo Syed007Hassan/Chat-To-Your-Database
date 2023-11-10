@@ -1,4 +1,13 @@
-# Table Of Contents
+<center>
+
+# NextJs-Langchain-Agents-SQL
+
+</center>
+
+
+![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/c428f51b-bf0c-4960-a873-744567a2f1b3)
+
+## Table Of Contents
 
 - [Introduction](#introduction)
 - [Features](#features)
@@ -13,7 +22,7 @@
 - [Contribution Guidelines](#contribution-guidelines)
 - [License](#license)
 
-# Introduction
+## Introduction
 
 Natural language querying allows users to interact with databases more intuitively and efficiently. By leveraging the power of LangChain, SQL Agents, and OpenAI’s Large Language Models (LLMs) like ChatGPT, we have created an application that enables users to query databases using NLP. All it needs a SQL-based schema, and it can perform any read and write action to that schema.
 
@@ -84,9 +93,9 @@ npm install
 
 ```bash
 /nest_api
-**npm run start:dev**
+npm run start:dev
 /client
-**npm run dev**
+npm run dev
 ```
 
 ## Contribution Guidelines
@@ -101,7 +110,7 @@ Contributions to this project are highly encouraged and appreciated. To help us 
 - Be responsive to feedback and iterate on your contributions, if necessary.
 - Upon review, your pull request will go through a validation process by the project maintainers. Once approved, your changes will be merged into the main branch, and you will become a contributor to the NextJs Langchain Agents SQL project. We appreciate your efforts in making this project better and more valuable.
 
-Please follow the contribution guidelines outlined in the [Contributing.md](.CONTRIBUTING.md) file in this repository, to make sure that your contributions align with the project standards.
+Please follow the contribution guidelines outlined in the [Contributing.md](CONTRIBUTING.md) file in this repository, to make sure that your contributions align with the project standards.
 
 ## License
 This project is licensed under the [MIT License](./LICENSE).
