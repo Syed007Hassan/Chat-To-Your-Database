@@ -12,7 +12,7 @@ const SqlViewer = (props: SqlViewerProps) => {
 
 	return (
 		<SyntaxHighlighter
-			className="text-slate-400 mt-2"
+			className="text-slate-400 mt-2 scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg"
 			language="sql"
 			style={theme}
 			customStyle={{
