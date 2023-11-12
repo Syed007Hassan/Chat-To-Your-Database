@@ -4,8 +4,8 @@
 
 </center>
 
+![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/3047eb24-4050-42d6-8e9f-749801711a94)
 
-![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/c428f51b-bf0c-4960-a873-744567a2f1b3)
 
 ## Table Of Contents
 
