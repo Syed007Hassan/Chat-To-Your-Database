@@ -8,14 +8,9 @@ services:
       dockerfile: Dockerfile
       context: .
     ports:
-      - 5000:5000
-    environment:
-      - DB_TYPE=postgres
-      - PG_HOST=postgres
-      - PG_USER=postgres
-      - PG_PASSWORD=postgres
-      - PG_DB=postgres
-      - PG_PORT=5432
+      - '5000:5000'
+    env_file:
+      - .env
     networks:
       - ctyd_bridge
     volumes:
@@ -29,10 +24,8 @@ services:
     image: postgres:12
     ports:
       - '5432:5432'
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+    env_file:
+      - .env
     networks:
       - ctyd_bridge
     volumes:
@@ -41,9 +34,8 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     container_name: ctyd-pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+    env_file:
+      - .env
     networks:
       - ctyd_bridge
     ports:
