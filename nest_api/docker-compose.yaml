@@ -25,7 +25,7 @@ services:
       - postgres
 
   postgres:
-    container_name: postgres
+    container_name: ctyd-postgres
     image: postgres:12
     ports:
       - '5432:5432'
@@ -40,7 +40,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: nest-pgadmin4
+    container_name: ctyd-pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
       PGADMIN_DEFAULT_PASSWORD: admin
