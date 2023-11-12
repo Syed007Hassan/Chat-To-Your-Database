@@ -1,42 +1,59 @@
-version: '3.5'
+version: '3'
 
 services:
-  db:
-    image: postgres
-    restart: always
+  nestapp:
+    container_name: ctyd-nestapp
+    image: ctyd-nestapp
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 5000:5000
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_SCHEMA: ${DB_SCHEMA}
-    container_name: postgres
+      - DB_TYPE=postgres
+      - PG_HOST=postgres
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_DB=postgres
+      - PG_PORT=5432
+    networks:
+      - ctyd_bridge
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:12
     ports:
       - '5432:5432'
-
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: langchain-nest
     environment:
-      PORT: ${PORT}
-    ports:
-      - '5000:5000'
-    depends_on:
-      - db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    networks:
+      - ctyd_bridge
     volumes:
-      - ./src:/app/src
+      - pgdata:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
-    restart: always
     container_name: nest-pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - ctyd_bridge
     ports:
       - '5050:80'
     depends_on:
-      - db
+      - postgres
+
+networks:
+  ctyd_bridge:
+    driver: bridge
+
+volumes:
+  pgdata: {}
