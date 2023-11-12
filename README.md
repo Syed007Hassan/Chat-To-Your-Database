@@ -56,7 +56,7 @@ https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/26
 ![pg res](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/4c8c94a2-5025-425b-ba5c-19b6036af534)
 
 ## Tech Stack
-  * **Frontend**: NextJS 
+  * **Frontend**: NextJS/TailwindCSS/Flowbite 
   * **Backend**: ExpressJS/NestJS
   * **Databases**: Sqlite/PostgreSQL/MongoDB
   * **LLM**: Langchain SQL Agent with Open AI LLM
@@ -65,38 +65,62 @@ https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/26
 
 ### Add Env file 
 
-In nest_api folder, add a **.env** file.
+After cloning the repo, change the directory to nest_api, and add a **.env** file.
 
 ```bash!
-DB_NAME=
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=
-DB_PASSWORD=
-DB_SCHEMA=
-OPENAI_API_KEY=sk-xxxx
+OPENAI_API_KEY=sk-xxx
 MONGODB_URI=
+# Docker environment variables
+DB_TYPE=postgres
+PG_HOST=postgres
+PG_USER=postgres
+PG_PASSWORD=postgres
+PG_DB=postgres
+PG_PORT=5432
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=postgres
+PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com
+PGADMIN_DEFAULT_PASSWORD=admin
+PORT=5000
 ```
-### Installing the APP
+### Running the APP using Docker Compose with your own Database (PostgreSQL)
 
-```bash!
-cd nest_api
-npm install
-```
+- Build compose
+  **```  docker-compose build --no-cache  ```**
+- Run Container with the build image
+  **``` docker-compose up ```**
 
-```bash
-cd client
-npm install
-```
+     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/63076655-b6bf-4229-89a2-3aec59ab196c)
+  
+- Open PgAdmin to upload your Database (I will use ***.tar** file to upload the whole database, you could use any method, and just remember to name the database as mentioned in **.env**. In my case it is **postgres**)
+- On **``` localhost:5050 ```**, login to PgAdmin
+ 
+     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/b0cfb4ca-51f2-4293-b50d-ec60f9bfd4ec)
 
-### Running the APP
+- Create a server group
+  
+     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/29cadd3e-d232-479f-aa81-646b4a996bb9)
+ 
+- Then register server
+  
+     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/e501184d-3599-444a-996d-e929ca7146c6)
 
-```bash
-/nest_api
-npm run start:dev
-/client
-npm run dev
-```
+     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/d5cb009a-bded-4f20-b88d-5c5831a6ad79)
+
+- Now restore the database to upload the file
+  
+    ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/da7d64fa-f71b-4ad9-85dd-4c5c72a60406)
+
+    ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/520d9769-3de6-419f-ae00-d29701be42ab)
+
+- After restoring, all the tables will be shown
+
+- Run the frontend using **``` npm run dev ```**, available at **``` localhost:3000 ```**,
+- According to your schema write any prompt to generate an SQL query and the results database contains
+
+    ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/3047eb24-4050-42d6-8e9f-749801711a94)
+  
 
 ## Contribution Guidelines
 
