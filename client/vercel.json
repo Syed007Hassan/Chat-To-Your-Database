@@ -1,7 +1,6 @@
 {
   "git": {
     "deploymentEnabled": {
-      "main": true,
       "features/hassan": false,
       "features/hanzala": false
     }
