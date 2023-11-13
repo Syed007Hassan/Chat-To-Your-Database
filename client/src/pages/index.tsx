@@ -283,14 +283,13 @@ export default function Home() {
           <Sidebar {...sidebarProps} />
 
           {showModal && selectedQueryHistory && (
-          <div className="fixed w-full h-full z-50 overflow-auto bg-gray-700/50 flex">
-          <ModalForTable
-              show={showModal}
-              onClose={() => setShowModal(false)}
-              response={selectedQueryHistory}
-              getSqlViewerContent={() => getSqlViewerContent()}
-            />
-          </div>
+            <div className="fixed w-full h-full z-50 overflow-auto bg-gray-700/50 flex">
+              <ModalForTable
+                show={showModal}
+                onClose={() => setShowModal(false)}
+                response={selectedQueryHistory}
+              />
+            </div>
           )}
           <section className="flex flex-col p-6 mt-8 w-full h-full justify-between">
             <div className="mt-8 flex flex-col flex-1">
