@@ -42,7 +42,7 @@ export class AiService implements OnModuleInit {
     this.toolkit = new SqlToolkit(postgresDb);
 
     this.executor = createSqlAgent(this.model, this.toolkit, {
-      topK: 10,
+      topK: 20,
       prefix: SQL_PREFIX,
       suffix: SQL_SUFFIX,
     });

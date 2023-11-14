@@ -1,42 +1,51 @@
-version: '3.5'
+version: '3'
 
 services:
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_SCHEMA: ${DB_SCHEMA}
-    container_name: postgres
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - '5432:5432'
-
-  app:
+  nestapp:
+    container_name: ctyd-nestapp
+    image: ctyd-nestapp
     build:
-      context: .
       dockerfile: Dockerfile
-    container_name: langchain-nest
-    environment:
-      PORT: ${PORT}
+      context: .
     ports:
       - '5000:5000'
-    depends_on:
-      - db
+    env_file:
+      - .env
+    networks:
+      - ctyd_bridge
     volumes:
-      - ./src:/app/src
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: ctyd-postgres
+    image: postgres:12
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env
+    networks:
+      - ctyd_bridge
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
-    restart: always
-    container_name: nest-pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    container_name: ctyd-pgadmin4
+    env_file:
+      - .env
+    networks:
+      - ctyd_bridge
     ports:
       - '5050:80'
     depends_on:
-      - db
+      - postgres
+
+networks:
+  ctyd_bridge:
+    driver: bridge
+
+volumes:
+  pgdata: {}
