@@ -59,7 +59,7 @@ const Sidebar = ({
               </li>
             ))
           ) : (
-            <li>No chat history available</li>
+            <li className="text-slate-800 dark:text-white">No chat history available</li>
           )}
         </ul>
       </div>
