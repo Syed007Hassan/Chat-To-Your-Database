@@ -4,8 +4,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer components {
+/* @layer components {
 	#__next {
         @apply h-full;
     }
-}
+} */
