@@ -14,8 +14,8 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { registerUser } from "@/redux/services/auth/authActions";
+// import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+// import { registerUser } from "@/redux/services/auth/authActions";
 import { redirect } from "next/navigation";
 import Header from "@/components/Header";
 import { useRouter } from "next/navigation";
@@ -33,10 +33,13 @@ export default function SignInSide() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const router = useRouter();
 
-  const { loading, userInfo, error, success } = useAppSelector(
-    (state) => state.authReducer
-  );
-  const dispatch = useAppDispatch();
+  // const { loading, userInfo, error, success } = useAppSelector(
+  //   (state) => state.authReducer
+  // );
+
+  const success = true;
+
+  // const dispatch = useAppDispatch();
 
   const handleSubmit = (event: any) => {
     const name = firstName + " " + lastName;
@@ -58,15 +61,15 @@ export default function SignInSide() {
     }
 
     data.email = data.email.toLowerCase();
-    dispatch(registerUser(data));
+    // dispatch(registerUser(data));
     console.log(success + "here is success");
   };
 
-  useEffect(() => {
-    if (success) {
-      router.push("/login");
-    }
-  }, [router, success, userInfo]);
+  // useEffect(() => {
+  //   if (success) {
+  //     router.push("/login");
+  //   }
+  // }, [router, success, userInfo]);
 
   return (
     <div>
