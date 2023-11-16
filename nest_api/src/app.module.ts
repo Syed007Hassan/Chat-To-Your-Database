@@ -7,8 +7,8 @@ import { PostgreSqlDataSource, SqliteDataSource } from '../ormConfig';
 
 import { MongooseModule } from '@nestjs/mongoose';
 import { AiModule } from './ai/ai.module';
-// import { AuthModule } from './auth/auth.module';
-// import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -20,8 +20,8 @@ import { AiModule } from './ai/ai.module';
     PostgreSqlDataSource,
     SqliteDataSource,
     AiModule,
-    // AuthModule,
-    // UserModule,
+    AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
