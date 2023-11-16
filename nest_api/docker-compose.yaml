@@ -18,6 +18,7 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - postgres
+      - mongodb
 
   postgres:
     container_name: ctyd-postgres
@@ -43,9 +44,27 @@ services:
     depends_on:
       - postgres
 
+  mongodb:
+    image: mongo:6.0
+    container_name: ctyd-mongodb
+    env_file:
+      - .env
+    networks:
+      - ctyd_bridge
+    ports:
+      - '27017:27017'
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - mongodbdata:/data/db
+
 networks:
   ctyd_bridge:
     driver: bridge
 
 volumes:
   pgdata: {}
+  mongodbdata: {}

@@ -16,7 +16,7 @@ import { AiModule } from './ai/ai.module';
       isGlobal: true,
       envFilePath: `.env`,
     }),
-    MongooseModule.forRoot(process.env.MONGODB_URI),
+    MongooseModule.forRoot(process.env.MONGO_URL),
     PostgreSqlDataSource,
     SqliteDataSource,
     AiModule,
