@@ -52,12 +52,12 @@ export class AuthService {
   }
 
   async verifyJwt(jwt: string) {
-    const { exp } = await this.jwtService.verifyAsync(jwt);
+    const res = await this.jwtService.verifyAsync(jwt);
 
     // if (exp < Date.now()) {
     //   throw new Error('Token expired');
     // }
 
-    return { exp };
+    return res;
   }
 }
