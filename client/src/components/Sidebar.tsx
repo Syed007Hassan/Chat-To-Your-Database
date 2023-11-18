@@ -11,10 +11,10 @@ const Sidebar = ({
   return (
     <aside
       id="logo-sidebar"
-      className="fixed top-0 left-0 overflow-x-hidden z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm-md:translate-x-0 sm-md:flex-shrink-0 sm-md:static dark:bg-slate-900 dark:border-gray-700"
+      className="fixed top-0 left-0 overflow-x-hidden z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-lightColor border-r border-gray-200 sm-md:translate-x-0 sm-md:flex-shrink-0 sm-md:static dark:bg-slate-900 dark:border-gray-700"
       aria-label="Sidebar"
     >
-      <div className="h-full px-3 pb-4 overflow-hidden overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg bg-white dark:bg-slate-900">
+      <div className="h-full px-3 pb-4 overflow-hidden overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg bg-lightColor dark:bg-slate-900">
         <ul className="space-y-2 font-medium">
           {chatHistory && chatHistory.length ? (
             chatHistory.map((history) => (
