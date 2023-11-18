@@ -35,9 +35,9 @@ const ChatForm = (props: ChatFormProps) => {
 				autoFocus={true}
 				autoComplete="off"
 				placeholder="What do you want from the database?"
-				className="bg-slate-700 rounded-2xl resize-none border-0 shadow-md h-16 pr-16 placeholder-slate-400"
+				className="rounded-2xl resize-none border-0 shadow-md h-16 pr-16 bg-lightColor dark:bg-slate-700 text-black dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400"
 			></input>
-			<button className="absolute right-1 top-1/2 -translate-y-1/2 p-4">
+			<button className="absolute right-1 top-1/2 -translate-y-1/2 p-4 text-slate-800 dark:text-slate-100">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"

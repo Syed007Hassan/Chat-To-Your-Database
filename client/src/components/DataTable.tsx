@@ -51,7 +51,7 @@ const DataTable = ({data}: DataTableProps) => {
 
 	return (
 		<table className="absolute w-full border-collapse">
-			<thead className="uppercase text-xs text-left sticky top-0 bg-slate-900">
+			<thead className="uppercase text-xs text-left sticky top-0 bg-slate-300 dark:bg-slate-900">
 				<tr>{header}</tr>
 			</thead>
 			<tbody className="text-slate-400">{rows}</tbody>

@@ -9,7 +9,7 @@ export default function ChatLayout({
   children: React.ReactNode
 }) {
   return (
-    <Flowbite>
+    <Flowbite theme={{dark:false}}>
         {children}
     </Flowbite>
   )

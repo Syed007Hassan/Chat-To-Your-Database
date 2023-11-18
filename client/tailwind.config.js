@@ -8,6 +8,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        lightColor: 'white',
+        // blueSky: '#7DF9FF'
+        // blueSky: '#87CEEB',
+        // blueSky: '#D0F0C0'
+        // blueSky: '#98FB98',
+        // blueSky: '#FFEED9'
+        // blueSky: '#FAF1E6'
+        // blueSky:'#FFE8DF',
+      },
       screens: {
 
         'sm': '640px',
