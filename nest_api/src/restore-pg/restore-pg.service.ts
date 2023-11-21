@@ -15,7 +15,7 @@ export class RestorePgService {
       const docker = new Docker({ socketPath: '/var/run/docker.sock' });
 
       // Get the 'postgres-db' container
-      const container = docker.getContainer('postgres-db');
+      const container = docker.getContainer('ctyd-postgres');
 
       // Define the command to restore the database dump
       const command = [

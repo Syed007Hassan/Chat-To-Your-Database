@@ -17,9 +17,9 @@ import { ApiTags, ApiOperation } from '@nestjs/swagger';
 export class RestorePgController {
   constructor(private readonly restorePgService: RestorePgService) {}
 
-  @Get('loadDataBaseDump')
+  @Post('loadDataBaseDump')
   @ApiOperation({
-    description: 'Load/Import the database dump',
+    summary: 'Load/Import the database dump',
   })
   async loadDataBaseDump() {
     try {
@@ -32,7 +32,7 @@ export class RestorePgController {
 
   @Get('listAllContainers')
   @ApiOperation({
-    description: 'List all containers',
+    summary: 'List all containers',
   })
   async listAllContainers() {
     try {
