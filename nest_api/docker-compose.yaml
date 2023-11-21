@@ -16,6 +16,7 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - postgres
       - mongodb
@@ -31,6 +32,8 @@ services:
       - ctyd_bridge
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./src/dbDumpFile:/dbDumpFile
+      - /var/run/docker.sock:/var/run/docker.sock
 
   pgadmin:
     image: dpage/pgadmin4
