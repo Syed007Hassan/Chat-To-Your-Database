@@ -9,6 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AiModule } from './ai/ai.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { RestorePgModule } from './restore-pg/restore-pg.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { UserModule } from './user/user.module';
     AiModule,
     AuthModule,
     UserModule,
+    RestorePgModule,
   ],
   controllers: [AppController],
   providers: [AppService],
