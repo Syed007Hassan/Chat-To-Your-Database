@@ -293,7 +293,7 @@ export default function Home() {
                   {response.error}
                 </p>
               )}
-              <div className="relative flex flex-col flex-1 rounded-2xl bg-lightColor dark:bg-slate-900 overflow-hidden overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg">
+              <div className="relative flex flex-col flex-1 rounded-2xl bg-lightColor dark:bg-slate-900 overflow-hidden overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-400 dark:scrollbar-track-slate-950 dark:scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg">
                 {waitingResponse || firstRun ? (
                   <div className="flex flex-col items-center justify-center h-full">
                     {waitingResponse && (
@@ -314,7 +314,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mb-12 mt-8">
-              <div className="p-4 bg-lightColor dark:bg-slate-900 rounded-xl w-full mb-8 scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg">
+              <div className="p-4 bg-lightColor dark:bg-slate-900 rounded-xl w-full mb-8 scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-400 dark:scrollbar-track-slate-950 dark:scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg">
                 <SqlViewer content={getSqlViewerContent()} />
               </div>
               <div className="flex rounded-2xl flex-col relative">
