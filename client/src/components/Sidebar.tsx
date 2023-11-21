@@ -14,21 +14,22 @@ const Sidebar = ({
       className="fixed top-0 left-0 overflow-x-hidden z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-lightColor border-r border-gray-200 sm-md:translate-x-0 sm-md:flex-shrink-0 sm-md:static dark:bg-slate-900 dark:border-gray-700"
       aria-label="Sidebar"
     >
-      <div className="h-full px-3 pb-4 overflow-hidden overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-track-slate-950 scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg bg-lightColor dark:bg-slate-900">
+      <div className="h-full px-3 pb-4 overflow-hidden overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-track-slate-100 scrollbar-thumb-slate-400 dark:scrollbar-track-slate-950 dark:scrollbar-thumb-slate-700 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg bg-lightColor dark:bg-slate-900">
         <ul className="space-y-2 font-medium">
           {chatHistory && chatHistory.length ? (
             chatHistory.map((history) => (
-              <li key={history._id}>
+              <li key={history._id}                   
+                  onClick={() => {
+                    setSelectedQueryHistory(history);
+                  }}
+                  className="cursor-pointer"
+              >
                 <a
-                  href="#"
                   className={`flex items-center p-2 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-700 ${
                     selectedQueryHistory?._id == history._id
                       ? "bg-slate-300 dark:bg-slate-700"
                       : ""
                   }`}
-                  onClick={() => {
-                    setSelectedQueryHistory(history);
-                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,7 @@ const Sidebar = ({
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-6 h-6 text-slate-900 dark:text-lightColor"
                   >
                     <path
                       strokeLinecap="round"

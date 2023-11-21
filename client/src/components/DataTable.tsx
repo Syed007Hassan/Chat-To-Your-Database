@@ -31,7 +31,7 @@ const DataTable = ({data}: DataTableProps) => {
 			result.push(
 				<td
 					key={i}
-					className={`px-6 py-4 whitespace-nowrap ${i + 1 !== keys.length ? "border-r border-slate-600/80" : ""}`}
+					className={`px-6 py-4 whitespace-nowrap ${i + 1 !== keys.length ? "border-r border-slate-300/80 dark:border-slate-600/80" : ""}`}
 				>
 					{item[keys[i]]}
 				</td>
@@ -43,7 +43,7 @@ const DataTable = ({data}: DataTableProps) => {
 
 	const rows = data.map((item: any, index: number) => {
 		return (
-			<tr className={index % 2 === 0 ? "bg-slate-800/70" : "bg-slate-900"} key={index}>
+			<tr className={index % 2 === 0 ? "bg-slate-300/70 dark:bg-slate-800/70" : "bg-lightColor dark:bg-slate-900"} key={index}>
 				{fillCells(item)}
 			</tr>
 		);
@@ -51,10 +51,10 @@ const DataTable = ({data}: DataTableProps) => {
 
 	return (
 		<table className="absolute w-full border-collapse">
-			<thead className="uppercase text-xs text-left sticky top-0 bg-slate-300 dark:bg-slate-900">
+			<thead className="uppercase text-xs text-left sticky top-0 text-slate-900 bg-lightColor dark:text-white dark:bg-slate-900">
 				<tr>{header}</tr>
 			</thead>
-			<tbody className="text-slate-400">{rows}</tbody>
+			<tbody className="text-slate-700 dark:text-slate-400">{rows}</tbody>
 		</table>
 	);
 };
