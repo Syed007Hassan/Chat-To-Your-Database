@@ -2,20 +2,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { signIn } from "next-auth/react";
-import styles from "./login.module.css";
 import Header from "@/components/Header";
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -25,18 +18,27 @@ export default function SignInSide() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [result, setResult] = useState(false);
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
 
   const handleSubmit = async (event: any) => {
     const result = await signIn("credentials", {
       email: email,
       password: password,
       redirect: true,
-      callbackUrl: "/dashboard",
+      callbackUrl: "/chat",
     });
 
-    if (result) {
+    if (result === null) {
       setResult(true);
+      setAlertMessage("User Logged In Successfully!");
+    } else {
+      setResult(false);
+      setAlertMessage("User Not Logged In!");
     }
+
+    setTimeout(() => {
+      setAlertMessage(null);
+    }, 2000);
   };
 
   const showPassword = () => {
@@ -54,13 +56,15 @@ export default function SignInSide() {
     <div className="min-h-screen justify-center">
       <Header />
       <div className="relative">
-        {result && (
+        {!result && (
           <div
-            className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 absolute top-4 right-4 transform -translate-y-3/2 z-20"
+            className={`p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 absolute top-4 right-4 transform -translate-y-3/2 z-20 transition-opacity duration-2000 ${
+              !alertMessage && "opacity-0"
+            }`}
             role="alert"
           >
             <p className="text-base font-semibold text-gray-900 dark:text-white">
-              User Logged In Successfully!
+              {alertMessage}
             </p>
           </div>
         )}
@@ -131,7 +135,7 @@ export default function SignInSide() {
 
               <div>
                 <h1 className="font-bold text-2xl mb-0">
-                  Login As A Recruiter
+                  Login To Your Account
                 </h1>
               </div>
 
