@@ -1,16 +1,11 @@
-'use client';
+"use client";
 
 import { Flowbite } from "flowbite-react";
-
 
 export default function ChatLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return (
-    <Flowbite theme={{dark:false}}>
-        {children}
-    </Flowbite>
-  )
+  return <Flowbite theme={{ dark: false }}>{children}</Flowbite>;
 }
