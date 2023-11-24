@@ -3,10 +3,7 @@ version: '3'
 services:
   nestapp:
     container_name: ctyd-nestapp
-    image: syed007hassan/ctyd-nestapp # Replace with your Docker Hub image
-    build:
-      dockerfile: Dockerfile
-      context: .
+    image: syed007hassan/ctyd-nestapp:latest
     ports:
       - '5000:5000'
     env_file:
@@ -14,16 +11,14 @@ services:
     networks:
       - ctyd_bridge
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${WEBAPP_STORAGE_HOME}/app:/usr/src/app
     depends_on:
       - postgres
       - mongodb
 
   postgres:
     container_name: ctyd-postgres
-    image: syed007hassan/ctyd-postgres # Replace with your Docker Hub image
+    image: syed007hassan/ctyd-postgres:latest
     ports:
       - '5432:5432'
     env_file:
@@ -31,12 +26,11 @@ services:
     networks:
       - ctyd_bridge
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./src/dbDumpFile:/dbDumpFile
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ${WEBAPP_STORAGE_HOME}/pgdata:/var/lib/postgresql/data
+      - ${WEBAPP_STORAGE_HOME}/dbDumpFile:/dbDumpFile
 
   pgadmin:
-    image: syed007hassan/ctyd-pgadmin4 # Replace with your Docker Hub image
+    image: syed007hassan/ctyd-pgadmin4:latest
     container_name: ctyd-pgadmin4
     env_file:
       - .env
@@ -48,7 +42,7 @@ services:
       - postgres
 
   mongodb:
-    image: syed007hassan/ctyd-mongo # Replace with your Docker Hub image
+    image: syed007hassan/ctyd-mongo:latest
     container_name: ctyd-mongodb
     env_file:
       - .env
@@ -61,7 +55,7 @@ services:
       timeout: 10s
       retries: 3
     volumes:
-      - mongodbdata:/data/db
+      - ${WEBAPP_STORAGE_HOME}/mongodbdata:/data/db
 
 networks:
   ctyd_bridge:
