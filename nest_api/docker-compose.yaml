@@ -3,7 +3,7 @@ version: '3'
 services:
   nestapp:
     container_name: ctyd-nestapp
-    image: ctyd-nestapp
+    image: syed007hassan/ctyd-nestapp # Replace with your Docker Hub image
     build:
       dockerfile: Dockerfile
       context: .
@@ -23,7 +23,7 @@ services:
 
   postgres:
     container_name: ctyd-postgres
-    image: postgres:12
+    image: syed007hassan/ctyd-postgres # Replace with your Docker Hub image
     ports:
       - '5432:5432'
     env_file:
@@ -36,7 +36,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   pgadmin:
-    image: dpage/pgadmin4
+    image: syed007hassan/ctyd-pgadmin4 # Replace with your Docker Hub image
     container_name: ctyd-pgadmin4
     env_file:
       - .env
@@ -48,7 +48,7 @@ services:
       - postgres
 
   mongodb:
-    image: mongo:6.0
+    image: syed007hassan/ctyd-mongo # Replace with your Docker Hub image
     container_name: ctyd-mongodb
     env_file:
       - .env
