@@ -2,23 +2,17 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-// import { registerUser } from "@/redux/services/auth/authActions";
 import { redirect } from "next/navigation";
 import Header from "@/components/Header";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import config from "@/interfaces/Config";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -33,15 +27,9 @@ export default function SignInSide() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const router = useRouter();
 
-  // const { loading, userInfo, error, success } = useAppSelector(
-  //   (state) => state.authReducer
-  // );
-
   const success = true;
 
-  // const dispatch = useAppDispatch();
-
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     const name = firstName + " " + lastName;
     const role = "employer";
     const designation = "HR";
@@ -61,21 +49,34 @@ export default function SignInSide() {
     }
 
     data.email = data.email.toLowerCase();
-    // dispatch(registerUser(data));
-    console.log(success + "here is success");
+    try {
+      const response = await axios.post(`${config.baseURl}/auth/register`, {
+        name,
+        email,
+        password,
+      });
+      if (response.data.success) {
+        router.push("/login");
+      } else {
+        // Handle error here
+        console.error(response.data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // useEffect(() => {
   //   if (success) {
   //     router.push("/login");
   //   }
-  // }, [router, success, userInfo]);
+  // }, [router, success]);
 
   return (
     <div>
       <Header />
       <div className="relative">
-        {success && (
+        {!success && (
           <div
             className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 absolute top-4 right-4 transform -translate-y-3/2 z-20"
             role="alert"
