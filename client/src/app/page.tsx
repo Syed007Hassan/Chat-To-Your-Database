@@ -14,13 +14,12 @@ export default function Home() {
       <div className="grid grid-rows-1 grid-flow-col">
         <div className="pt-6 pr-20 pl-10 pb-6">
           <header className="pr-20 pl-20">
-            <h1 className=" text-blue-500 mb-4">SyncFlow recruitment</h1>
+            <h1 className=" text-blue-500 mb-4">SQL-Agent-LangChain</h1>
             <h1 className="pr-20 text-7xl font-semibold text-blue-900 my-8">
-              Software designed for everyone involved in hiring
+              Chat With Your Database
             </h1>
             <p className="text-lg text-gray-600">
-              SyncFlow is a modern hiring platform that helps teams source,
-              interview, and hire the best talent for their business.
+              CWYD is a platform where users can communicate with their databases using simple english query
             </p>
             {/* request a demo button */}
             <div className="flex pt-9">
@@ -45,43 +44,43 @@ export default function Home() {
       </div>
 
       {/* 2 container */}
-      <div className="lg:pl-20 pb-10 pt-10 lg:pr-20 pl-32 pr-10">
+      <div id="Features" className="lg:pl-20 pb-10 pt-10 lg:pr-20 pl-32 pr-10">
         <div className="lg:pr-64 pr-10">
           <h1 className="text-5xl font-normal text-gray-800 my-8 lg:pl-20 lg:pr-64 pr-10">
-            Get the technology and know-how to be great at hiring so you can:
+            What it Offers
           </h1>
         </div>
         <div className="grid grid-rows-1 grid-flow-col pt-16 lg:pl-16 lg:pr-16">
           <div className="flex justify-center border-solid border-blue-800 border-r-2 border-b-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Source and nurture the right candidates
+              Input Prompts 
             </p>
           </div>
           <div className="flex justify-center border-solid border-blue-800 border-r-2 border-b-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Source and nurture the right candidates
+              SQL Query Generated
             </p>
           </div>
           <div className=" flex justify-center border-solid border-blue-800 border-b-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Source and nurture the right candidates
+              Data Table View
             </p>
           </div>
         </div>
         <div className="grid grid-rows-1 grid-flow-col lg:pr-16 pb-16 lg:pl-16">
           <div className="flex justify-center border-solid border-blue-800 border-r-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Source and nurture the right candidates
+            Light/Dark Mode 
             </p>
           </div>
           <div className="flex justify-center border-solid border-blue-800 border-r-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Source and nurture the right candidates
+              Prompt History Modal
             </p>
           </div>
           <div className=" flex justify-center pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Source and nurture the right candidates
+              Authentication 
             </p>
           </div>
         </div>
@@ -89,15 +88,15 @@ export default function Home() {
 
       {/* //  How it can work: */}
 
-      <div className="max-w-6xl mx-auto py-10 px-4 pt-20">
+      <div id="Working" className="max-w-6xl mx-auto py-10 px-4 pt-20">
         <h1 className="text-5xl font-normal text-gray-800 mb-8">
-          How it can work:
+          How it works:
         </h1>
         <div className="lg:space-y-8 pt-20">
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4">
             <div className="w-full lg:w-1/2">
               <h1 className="text-3xl font-bold">
-                Find and engage top talent with ease
+                Sign Up And Log In
               </h1>
               <p className="text-lg font-medium text-gray-800 my-4">
                 In the midst of a bustling cityscape, the neon lights painted
@@ -127,8 +126,8 @@ export default function Home() {
               />
             </div>
             <div className="w-full lg:w-1/2">
-              <h1 className="text-3xl font-bold">
-                Find and engage top talent with ease
+              <h1 className="text-3xl font-bold capitalize">
+                Set up your Query database
               </h1>
               <p className="text-lg font-medium text-gray-800 my-4">
                 In the midst of a bustling cityscape, the neon lights painted
@@ -141,7 +140,7 @@ export default function Home() {
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4 pt-20">
             <div className="w-full lg:w-1/2">
               <h1 className="text-3xl font-bold">
-                Find and engage top talent with ease
+                English Prompt Query
               </h1>
               <p className="text-lg font-medium text-gray-800 my-4">
                 In the midst of a bustling cityscape, the neon lights painted
@@ -175,7 +174,7 @@ export default function Home() {
             </div>
             <div className="w-full lg:w-1/2">
               <h1 className="text-3xl font-bold">
-                Find and engage top talent with ease
+                Data-table Response View 
               </h1>
 
               <p className="text-lg font-medium text-gray-800 my-4">
@@ -189,7 +188,7 @@ export default function Home() {
       </div>
 
       {/* products */}
-      <div className="lg:grid lg:grid-rows-1 lg:grid-flow-col pt-20">
+      {/* <div className="lg:grid lg:grid-rows-1 lg:grid-flow-col pt-20">
         <div className="pt-6 lg:pr-20 lg:pl-10 pb-6">
           <header className="lg:pr-20 lg:pl-20 pr-10 pl-10">
             <h1 className="lg:pr-20 text-7xl font-semibold text-gray-800 my-8 pt-16 ">
@@ -235,7 +234,7 @@ export default function Home() {
             </p>
           </header>
         </div>
-      </div>
+      </div> */}
 
       {/* Footer */}
       <Footer />
