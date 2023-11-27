@@ -14,19 +14,15 @@ export default function Home() {
       <div className="grid grid-rows-1 grid-flow-col">
         <div className="pt-6 pr-20 pl-10 pb-6">
           <header className="pr-20 pl-20">
-            <h1 className=" text-blue-500 mb-4">SQL-Agent-LangChain</h1>
             <h1 className="pr-20 text-7xl font-semibold text-blue-900 my-8">
-              Chat With Your Database
+              Chat To Your Database
             </h1>
             <p className="text-lg text-gray-600">
-              CWYD is a platform where users can communicate with their databases using simple english query
+              Natural language querying allows users to interact with databases
+              more intuitively and efficiently. By leveraging the power of
+              LangChain Agents, we have created an application that enable users
+              to query databases using Natural Language.
             </p>
-            {/* request a demo button */}
-            <div className="flex pt-9">
-              <button className="bg-blue-800 text-white rounded-full py-3 px-6 font-semibold hover:bg-blue-600">
-                Request a demo
-              </button>
-            </div>
           </header>
         </div>
         <div
@@ -47,30 +43,30 @@ export default function Home() {
       <div id="Features" className="lg:pl-20 pb-10 pt-10 lg:pr-20 pl-32 pr-10">
         <div className="lg:pr-64 pr-10">
           <h1 className="text-5xl font-normal text-gray-800 my-8 lg:pl-20 lg:pr-64 pr-10">
-            What it Offers
+            What It Offers
           </h1>
         </div>
         <div className="grid grid-rows-1 grid-flow-col pt-16 lg:pl-16 lg:pr-16">
           <div className="flex justify-center border-solid border-blue-800 border-r-2 border-b-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Input Prompts 
+              Allow Personalized Schema with Database
             </p>
           </div>
           <div className="flex justify-center border-solid border-blue-800 border-r-2 border-b-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              SQL Query Generated
+              SQL Query Generation & Execution
             </p>
           </div>
           <div className=" flex justify-center border-solid border-blue-800 border-b-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Data Table View
+              Visualize Data Table View
             </p>
           </div>
         </div>
         <div className="grid grid-rows-1 grid-flow-col lg:pr-16 pb-16 lg:pl-16">
           <div className="flex justify-center border-solid border-blue-800 border-r-2 pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-            Light/Dark Mode 
+              Light/Dark Mode
             </p>
           </div>
           <div className="flex justify-center border-solid border-blue-800 border-r-2 pt-12 pb-12">
@@ -80,7 +76,7 @@ export default function Home() {
           </div>
           <div className=" flex justify-center pt-12 pb-12">
             <p className="text-lg font-medium text-gray-800 my-4 text-center">
-              Authentication 
+              Authentication
             </p>
           </div>
         </div>
@@ -95,9 +91,7 @@ export default function Home() {
         <div className="lg:space-y-8 pt-20">
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4">
             <div className="w-full lg:w-1/2">
-              <h1 className="text-3xl font-bold">
-                Sign Up And Log In
-              </h1>
+              <h1 className="text-3xl font-bold">Sign Up And Log In</h1>
               <p className="text-lg font-medium text-gray-800 my-4">
                 In the midst of a bustling cityscape, the neon lights painted
                 the night in vibrant hues, casting an enchanting glow upon the
@@ -139,9 +133,7 @@ export default function Home() {
 
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4 pt-20">
             <div className="w-full lg:w-1/2">
-              <h1 className="text-3xl font-bold">
-                English Prompt Query
-              </h1>
+              <h1 className="text-3xl font-bold">English Prompt Query</h1>
               <p className="text-lg font-medium text-gray-800 my-4">
                 In the midst of a bustling cityscape, the neon lights painted
                 the night in vibrant hues, casting an enchanting glow upon the
@@ -173,9 +165,7 @@ export default function Home() {
               />
             </div>
             <div className="w-full lg:w-1/2">
-              <h1 className="text-3xl font-bold">
-                Data-table Response View 
-              </h1>
+              <h1 className="text-3xl font-bold">Data-table Response View</h1>
 
               <p className="text-lg font-medium text-gray-800 my-4">
                 In the midst of a bustling cityscape, the neon lights painted

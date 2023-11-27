@@ -142,7 +142,7 @@ export default function SignInSide() {
           >
             <Box
               sx={{
-                my: 1,
+                my: 8,
                 mx: 4,
                 display: "flex",
                 flexDirection: "column",
@@ -155,7 +155,7 @@ export default function SignInSide() {
 
               <div className="mt-1">
                 <h1 className="font-bold text-2xl mb-1">
-                  Sign Up as a Recruiter
+                  Sign Up To Get Started
                 </h1>
               </div>
 
@@ -195,7 +195,7 @@ export default function SignInSide() {
                   </div>
                 </div>
 
-                <div className="w-full mb-4">
+                {/* <div className="w-full mb-4">
                   <label
                     htmlFor="company"
                     className="mb-1 block mt-2 text-sm font-bold text-gray-900 dark:text-white"
@@ -225,7 +225,7 @@ export default function SignInSide() {
                     onChange={(e) => setPhone(e.target.value)}
                     required={true}
                   />
-                </div>
+                </div> */}
 
                 <div className="mb-4">
                   <label
@@ -280,7 +280,7 @@ export default function SignInSide() {
 
                 <div>
                   <button
-                    className="w-full bg-blue-500 hover:bg-blue-700 sm:mb-0 text-white font-bold py-2 px-4 rounded-full"
+                    className="w-full mt-2 bg-blue-500 hover:bg-blue-700 sm:mb-0 text-white font-bold py-2 px-4 rounded-full"
                     type="button"
                     onClick={handleSubmit}
                   >
@@ -288,9 +288,9 @@ export default function SignInSide() {
                   </button>
                 </div>
 
-                <div className="text-center ">
+                <div className="text-center mt-3 ">
                   <a
-                    className="inline-block align-baseline sm:mt-0 mb-0 font-bold text-sm text-blue-500 hover:text-blue-800"
+                    className="inline-block  align-baseline sm:mt-0 mb-0 font-bold text-sm text-blue-500 hover:text-blue-800"
                     href="/login"
                   >
                     {"Already have an account? Sign In"}
