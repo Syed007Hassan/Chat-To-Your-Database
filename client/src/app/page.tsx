@@ -27,13 +27,13 @@ export default function Home() {
         </div>
         <div
           className="pl-10 pb-6 pr-10 flex"
-          style={{ width: "650px", height: "630px" }}
+          style={{ width: "950px", height: "530px" }}
         >
           <Image
-            src="/landing-pic.png"
+            src="/sqlchat.jpg"
             alt="Picture of the author"
-            width={500}
-            height={500}
+            width={650}
+            height={300}
             className="object-cover w-full h-full hidden lg:block"
           />
         </div>
@@ -86,7 +86,7 @@ export default function Home() {
 
       <div id="Working" className="max-w-6xl mx-auto py-10 px-4 pt-20">
         <h1 className="text-5xl font-normal text-gray-800 mb-8">
-          How it works:
+          How It Works
         </h1>
         <div className="lg:space-y-8 pt-20">
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4">
@@ -100,7 +100,7 @@ export default function Home() {
             </div>
             <div className="w-full lg:w-1/2">
               <Image
-                src="/landing-pic.png"
+                src="/sign-up.png"
                 alt="Image Description 1"
                 className="w-full h-auto max-w-md"
                 width={500}
@@ -112,7 +112,7 @@ export default function Home() {
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4 pt-20">
             <div className="w-full lg:w-1/2">
               <Image
-                src="/landing-pic.png"
+                src="/schema setup.png"
                 alt="Image Description 2"
                 className="w-full h-auto max-w-md"
                 width={500}
@@ -157,7 +157,7 @@ export default function Home() {
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4 pt-20">
             <div className="w-full lg:w-1/2">
               <Image
-                src="/landing-pic.png"
+                src="/data-view.png"
                 alt="Image Description 4"
                 className="w-full h-auto max-w-md"
                 width={500}
@@ -176,57 +176,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* products */}
-      {/* <div className="lg:grid lg:grid-rows-1 lg:grid-flow-col pt-20">
-        <div className="pt-6 lg:pr-20 lg:pl-10 pb-6">
-          <header className="lg:pr-20 lg:pl-20 pr-10 pl-10">
-            <h1 className="lg:pr-20 text-7xl font-semibold text-gray-800 my-8 pt-16 ">
-              SyncFlow Recruiter
-            </h1>
-            <p className="text-lg text-gray-600">
-              Syncflow is a modern hiring platform that helps teams source,
-              interview, and hire the best talent for their business.
-            </p>
-          </header>
-        </div>
-        <div
-          className="pt-6 lg:pl-10 flex"
-          style={{ width: "780px", height: "500px" }}
-        >
-          <Image
-            src="/syncflow_recruiter.avif"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-            className="object-cover w-full h-full"
-          />
-        </div>
-      </div>
-      <div className="lg:grid lg:grid-rows-1 lg:grid-flow-col pb-10 lg:pb-0">
-        <div className=" flex" style={{ width: "780px", height: "500px" }}>
-          <Image
-            src="/syncflow-applicant.webp"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-            className="object-cover w-full h-full"
-          />
-        </div>
-        <div className="pt-6 lg:pr-20 lg:pl-10">
-          <header className="lg:pr-20 lg:pl-20 pr-10 pl-10">
-            <h1 className="lg:pr-20 text-7xl font-semibold text-gray-800 my-8 pt-16 ">
-              SyncFlow Applicant
-            </h1>
-            <p className="text-lg text-gray-600">
-              Syncflow is a modern hiring platform that helps teams source,
-              interview, and hire the best talent for their business.
-            </p>
-          </header>
-        </div>
-      </div> */}
-
-      {/* Footer */}
       <Footer />
     </div>
   );
