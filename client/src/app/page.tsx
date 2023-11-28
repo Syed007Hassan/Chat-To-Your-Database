@@ -8,16 +8,16 @@ import Header from "@/components/Header";
 
 export default function Home() {
   return (
-    <div className=" min-h-screen justify-center">
+    <div className="min-h-screen justify-center">
       <Header />
 
-      <div className="grid grid-rows-1 grid-flow-col">
-        <div className="pt-6 pr-20 pl-10 pb-6">
-          <header className="pr-20 pl-20">
-            <h1 className="pr-20 text-7xl font-semibold text-blue-900 my-8">
+      <div className="px-5 md:px-0 grid grid-rows-[1fr,2fr] lg:grid-rows-1 grid-flow-row lg:grid-flow-col lg:grid-cols-2 lg:items-center h-screen">
+        <div className="md:pr-20 md:pl-10 lg:pb-6">
+          <header className="md:pl-20">
+            <h1 className="text-2xl md:text-4xl lg:text-7xl font-semibold text-blue-900 my-6 sm:my-8">
               Chat To Your Database
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-sm md:text-md lg:text-lg text-gray-600">
               Natural language querying allows users to interact with databases
               more intuitively and efficiently. By leveraging the power of
               LangChain Agents, we have created an application that enable users
@@ -26,23 +26,22 @@ export default function Home() {
           </header>
         </div>
         <div
-          className="pl-10 pb-6 pr-10 flex"
-          style={{ width: "950px", height: "530px" }}
+          className="md:pl-28 md:pr-28 lg:pl-10 lg:pr-10 lg:pt-14 pb-6 flex w-full h-[85%] lg:h-[500px] xl:h-[400px]"
         >
           <Image
             src="/sqlchat.jpg"
             alt="Picture of the author"
-            width={650}
-            height={300}
-            className="object-cover w-full h-full hidden lg:block"
+            width={800}
+            height={400}
+            className="object-cover w-full h-full lg:block"
           />
         </div>
       </div>
 
       {/* 2 container */}
-      <div id="Features" className="lg:pl-20 pb-10 pt-10 lg:pr-20 pl-32 pr-10">
+      <div id="Features" className="lg:pl-20 pb-10 lg:pr-20 pl-32 pr-10 pt-20">
         <div className="lg:pr-64 pr-10">
-          <h1 className="text-5xl font-normal text-gray-800 my-8 lg:pl-20 lg:pr-64 pr-10">
+          <h1 className="text-5xl font-normal text-gray-800 my-8 lg:pl-10 lg:pr-64 pr-10">
             What It Offers
           </h1>
         </div>
@@ -84,11 +83,11 @@ export default function Home() {
 
       {/* //  How it can work: */}
 
-      <div id="Working" className="max-w-6xl mx-auto py-10 px-4 pt-20">
+      <div id="Working" className=" pr-36 pl-32 py-10 px-4 pt-28">
         <h1 className="text-5xl font-normal text-gray-800 mb-8">
           How It Works
         </h1>
-        <div className="lg:space-y-8 pt-20">
+        <div className="lg:space-y-8 pl-8">
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4">
             <div className="w-full lg:w-1/2">
               <h1 className="text-3xl font-bold">Sign Up And Log In</h1>
@@ -102,7 +101,7 @@ export default function Home() {
               <Image
                 src="/sign-up.png"
                 alt="Image Description 1"
-                className="w-full h-auto max-w-md"
+                className="w-full h-auto"
                 width={500}
                 height={500}
               />
@@ -110,11 +109,11 @@ export default function Home() {
           </div>
 
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4 pt-20">
-            <div className="w-full lg:w-1/2">
+            <div className="w-full md:mb-10 lg:pr-10 lg:w-1/2">
               <Image
                 src="/schema setup.png"
                 alt="Image Description 2"
-                className="w-full h-auto max-w-md"
+                className="w-full h-[350px] rounded-xl"
                 width={500}
                 height={500}
               />
@@ -140,11 +139,11 @@ export default function Home() {
                 faces of passersby..
               </p>
             </div>
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-[80%]">
               <Image
-                src="/landing-pic.png"
+                src="/sql_agent_2.png"
                 alt="Image Description 3"
-                className="w-full h-auto max-w-md"
+                className="w-full h-[450px]"
                 width={500}
                 height={500}
               />
@@ -155,11 +154,11 @@ export default function Home() {
           <div className="mb-8"></div>
 
           <div className="lg:w-3/3 lg:pr-10 lg:flex items-center space-x-4 pt-20">
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-[70%]">
               <Image
                 src="/data-view.png"
                 alt="Image Description 4"
-                className="w-full h-auto max-w-md"
+                className="w-full h-[350px] md:mb-10 lg:mr-10 rounded-xl"
                 width={500}
                 height={500}
               />
