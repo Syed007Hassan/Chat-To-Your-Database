@@ -2,7 +2,9 @@
   "git": {
     "deploymentEnabled": {
       "features/hassan": false,
-      "features/hanzala": false
+      "features/hanzala": false,
+      "docker-deployment": false,
+      "branch-with-express-api": false
     }
   }
 }
