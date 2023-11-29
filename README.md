@@ -85,12 +85,12 @@ PORT=5000
 ```
 ### Running the APP using Docker Compose with your own Database (PostgreSQL)
 
-- Build compose
+- Build the image using
   **```  docker-compose build --no-cache  ```**
 - Run Container with the build image
   **``` docker-compose up ```**
 
-     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/63076655-b6bf-4229-89a2-3aec59ab196c)
+     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/42c9a960-d5df-4de1-b159-fa0dbcdf8c96)
   
 - Open PgAdmin to upload your Database (I will use ***.tar** file to upload the whole database, you could use any method, and just remember to name the database as mentioned in **.env**. In my case it is **postgres**)
 - On **``` localhost:5050 ```**, login to PgAdmin
@@ -115,11 +115,11 @@ PORT=5000
 
 - After restoring, all the tables will be shown
 
-- Run the frontend using **``` npm run dev ```**, available at **``` localhost:3000 ```**,
+- Run the frontend after changing the directory to the client and then using **``` npm run dev ```**, available at **``` localhost:3000 ```**
+- Register and then Sign-in, the application will be redirected towards  **```/chat```** URL
 - According to your schema write any prompt to generate an SQL query and the results database contains
-
-    ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/3047eb24-4050-42d6-8e9f-749801711a94)
   
+    ![chatpath](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/7583e9a1-4558-4020-8c96-e5e36b1e1e42)
 
 ## Contribution Guidelines
 
@@ -134,6 +134,7 @@ Contributions to this project are highly encouraged and appreciated. To help us 
 - Upon review, your pull request will go through a validation process by the project maintainers. Once approved, your changes will be merged into the main branch, and you will become a contributor to the NextJs Langchain Agents SQL project. We appreciate your efforts in making this project better and more valuable.
 
 Please follow the contribution guidelines outlined in the [Contributing.md](CONTRIBUTING.md) file in this repository, to make sure that your contributions align with the project standards.
+
 
 ## License
 This project is licensed under the [MIT License](./LICENSE).
