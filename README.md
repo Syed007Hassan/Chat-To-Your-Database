@@ -69,7 +69,6 @@ After cloning the repo, change the directory to nest_api, and add a **.env** fil
 
 ```bash!
 OPENAI_API_KEY=sk-xxx
-MONGODB_URI=
 # Docker environment variables
 DB_TYPE=postgres
 PG_HOST=postgres
@@ -82,6 +81,9 @@ POSTGRES_PASSWORD=postgres
 POSTGRES_DB=postgres
 PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com
 PGADMIN_DEFAULT_PASSWORD=admin
+MONGO_INITDB_ROOT_USERNAME=root
+MONGO_INITDB_ROOT_PASSWORD=pass12345
+MONGO_URL=mongodb://root:pass12345@mongodb:27017/chatwithdb?authSource=admin
 PORT=5000
 ```
 ### Running the APP using Docker Compose with your own Database (PostgreSQL)
