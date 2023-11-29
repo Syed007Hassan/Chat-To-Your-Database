@@ -16,9 +16,6 @@
     - [Sample database PostgreSQL](#sample-database-postgresql)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
-    - [Add Env file](#add-env-file)
-    - [Installing the app](#installing-the-app)
-    - [Running the app](#running-the-app)
 - [Contribution Guidelines](#contribution-guidelines)
 - [License](#license)
 
