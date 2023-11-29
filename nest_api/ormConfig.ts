@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 
 configDotenv();
-
+//main database
 export const PostgreSqlDataSource = TypeOrmModule.forRootAsync({
   name: 'postgres',
   useFactory: async (config: ConfigService) => ({
