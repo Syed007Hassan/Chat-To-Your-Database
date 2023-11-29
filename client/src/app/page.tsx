@@ -11,7 +11,7 @@ export default function Home() {
     <div className="min-h-screen justify-center">
       <Header />
 
-      <div className="px-5 md:px-0 grid grid-rows-[1fr,2fr] lg:grid-rows-1 grid-flow-row lg:grid-flow-col lg:grid-cols-2 lg:items-center h-screen">
+      <div className="px-5 md:px-0 grid grid-rows-[1fr,2fr] lg:grid-rows-1 grid-flow-row lg:grid-flow-col lg:grid-cols-2 lg:mt-20 h-screen">
         <div className="md:pr-20 md:pl-10 lg:pb-6">
           <header className="md:pl-20">
             <h1 className="text-2xl md:text-4xl lg:text-7xl font-semibold text-blue-900 my-6 sm:my-8">
