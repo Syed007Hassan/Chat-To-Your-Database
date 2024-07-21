@@ -17,7 +17,7 @@ import { RestorePgModule } from './restore-pg/restore-pg.module';
       isGlobal: true,
       envFilePath: `.env`,
     }),
-    MongooseModule.forRoot(process.env.MONGO_URL),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
     PostgreSqlDataSource,
     SqliteDataSource,
     AiModule,
