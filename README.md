@@ -54,9 +54,9 @@ https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/26
 ![pg res](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/4c8c94a2-5025-425b-ba5c-19b6036af534)
 
 ## Tech Stack
-  * **Frontend**: NextJS/TailwindCSS/Flowbite 
-  * **Backend**: ExpressJS/NestJS
-  * **Databases**: Sqlite/PostgreSQL/MongoDB
+  * **Frontend**: NextJS, TailwindCSS, Flowbite 
+  * **Backend**: ExpressJS, NestJS
+  * **Databases**: Sqlite, PostgreSQL, MongoDB
   * **LLM**: Langchain SQL Agent with Open AI LLM
 
 ## Getting Started
