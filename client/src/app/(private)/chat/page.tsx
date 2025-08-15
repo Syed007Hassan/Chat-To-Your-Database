@@ -240,7 +240,7 @@ export default function Home() {
     const fetchChatHistory = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/ai/getAllChatHistory"
+          `${config.baseURl}/ai/getAllChatHistory`
         );
         setChatHistory(response.data.data);
         // console.log(response.data.data);
