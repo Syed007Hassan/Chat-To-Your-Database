@@ -30,7 +30,7 @@ services:
     ports:
       - '5001:5001'
     env_file:
-      - ./nest_api/.env
+      - .env
     networks:
       - ctyd_bridge
     volumes:
@@ -48,7 +48,7 @@ services:
     ports:
       - '5432:5432'
     env_file:
-      - ./nest_api/.env
+      - .env
     networks:
       - ctyd_bridge
     volumes:
@@ -61,7 +61,7 @@ services:
     image: dpage/pgadmin4
     container_name: ctyd-pgadmin4
     env_file:
-      - ./nest_api/.env
+      - .env
     networks:
       - ctyd_bridge
     ports:
@@ -74,7 +74,7 @@ services:
     image: mongo:6.0
     container_name: ctyd-mongodb
     env_file:
-      - ./nest_api/.env
+      - .env
     networks:
       - ctyd_bridge
     ports:
