@@ -12,6 +12,10 @@
 
 _Democratize database access through natural language conversations powered by AI_
 
+
+<img width="1918" height="924" alt="image" src="https://github.com/user-attachments/assets/f11fb3ee-6406-4de4-a800-b6dd56758345" />
+
+
 </div>
 
 ---
