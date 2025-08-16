@@ -359,7 +359,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE
 
 - 🐛 **Issues**: [GitHub Issues](https://github.com/Syed007Hassan/Chat-To-Your-Database/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/Syed007Hassan/Chat-To-Your-Database/discussions)
-- 📧 **Email**: Contact the maintainer through GitHub
+- 📧 **Email**: Contact *syed007hassan@gmail.com* for any questions or support.
 
 ---
 
