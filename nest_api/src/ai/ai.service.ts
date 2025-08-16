@@ -1,9 +1,9 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { OpenAI } from 'langchain/llms/openai';
+import { ChatGroq } from '@langchain/groq';
 import { createSqlAgent, SqlToolkit } from 'langchain/agents/toolkits/sql';
 import { SqlDatabase } from 'langchain/sql_db';
 import { DataSource } from 'typeorm';
-import { RESULT } from './constants/results';
 import { SQL_SUFFIX, SQL_PREFIX } from './constants/prompt';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { InjectModel } from '@nestjs/mongoose';
@@ -15,7 +15,7 @@ import { ChatHistoryResponseDto } from './dto/chatHistory-response.dto';
 @Injectable()
 export class AiService implements OnModuleInit {
   private executor: any;
-  private model: OpenAI;
+  private model: any;
   private toolkit: SqlToolkit;
 
   constructor(
@@ -34,10 +34,25 @@ export class AiService implements OnModuleInit {
       appDataSource: this.sqliteDataSource,
     });
 
-    this.model = new OpenAI({
-      openAIApiKey: process.env.OPENAI_API_KEY,
-      temperature: 0,
-    });
+    // Configure LLM based on environment variables
+    const llmProvider = process.env.LLM_PROVIDER || 'groq';
+
+    if (llmProvider === 'groq') {
+      this.model = new ChatGroq({
+        apiKey: process.env.GROQ_API_KEY,
+        model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
+        temperature: 0.1,
+        maxTokens: 4096,
+        streaming: true,
+      });
+    } else if (llmProvider === 'openai') {
+      this.model = new OpenAI({
+        openAIApiKey: process.env.OPENAI_API_KEY,
+        temperature: 0,
+      });
+    } else {
+      throw new Error(`Unsupported LLM provider: ${llmProvider}`);
+    }
 
     this.toolkit = new SqlToolkit(postgresDb);
 
@@ -50,16 +65,21 @@ export class AiService implements OnModuleInit {
 
   async chat(prompt: string): Promise<AiResponse> {
     let aiResponse = new AiResponse();
+    aiResponse.prompt = prompt;
 
     try {
       const result = await this.executor.call({ input: prompt });
 
-      // dummy result
-      // const result = RESULT;
+      if (!result || !result.intermediateSteps) {
+        aiResponse.error = 'No response from LLM. Please try again.';
+        return aiResponse;
+      }
+
+      aiResponse.sqlQuery = 'No SQL generated';
+      aiResponse.result = [];
 
       result.intermediateSteps.forEach((step) => {
         if (step.action.tool === 'query-sql') {
-          aiResponse.prompt = prompt;
           aiResponse.sqlQuery = step.action.toolInput;
           aiResponse.sqlQuery = aiResponse.sqlQuery
             .replace(/\\/g, '')
@@ -73,32 +93,24 @@ export class AiService implements OnModuleInit {
               aiResponse.result = observation;
             }
           } catch (error) {
-            console.log(error);
+            // ignore JSON parse errors for non-JSON observations
           }
         }
       });
 
-      // console.log(
-      //   `Intermediate steps ${JSON.stringify(
-      //     result.intermediateSteps,
-      //     null,
-      //     2,
-      //   )}`,
-      // );
-
-      const chatHistory = new this.chatHistoryModel({
-        prompt: aiResponse.prompt,
-        sqlQuery: aiResponse.sqlQuery,
-        queryResult: aiResponse.result,
-      });
-
-      await chatHistory.save();
+      if (aiResponse.sqlQuery && aiResponse.sqlQuery !== 'No SQL generated') {
+        const chatHistory = new this.chatHistoryModel({
+          prompt: aiResponse.prompt,
+          sqlQuery: aiResponse.sqlQuery,
+          queryResult: aiResponse.result,
+        });
+        await chatHistory.save();
+      }
 
       return aiResponse;
     } catch (e) {
-      console.log(e + ' ' + 'my error message');
-      aiResponse.error = 'Server error. Try again with a different prompt.';
-
+      console.error('AI Service Error:', e);
+      aiResponse.error = `Server error: ${e.message || 'Try again with a different prompt.'}`;
       return aiResponse;
     }
   }

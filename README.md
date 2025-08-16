@@ -1,144 +1,372 @@
-<center>
+<div align="center">
 
-# Chat To Your Database
+# 🗣️ Chat To Your Database
 
-</center>
+### _Transform Natural Language into SQL Queries with AI_
 
-![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/3047eb24-4050-42d6-8e9f-749801711a94)
+[![Next.js](https://img.shields.io/badge/Next.js-13.5.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![NestJS](https://img.shields.io/badge/NestJS-10.0.0-red?style=for-the-badge&logo=nestjs)](https://nestjs.com/)
+[![LangChain](https://img.shields.io/badge/LangChain-0.0.195-green?style=for-the-badge)](https://langchain.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker)](https://www.docker.com/)
 
-https://github.com/user-attachments/assets/0260ee61-50da-41ba-aead-e9197d4b5947
+_Democratize database access through natural language conversations powered by AI_
 
-## Table Of Contents
+</div>
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Examples](#examples)
-    - [Sample database SQLite](#sample-database-sqlite)
-    - [Sample database PostgreSQL](#sample-database-postgresql)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Contribution Guidelines](#contribution-guidelines)
-- [License](#license)
+---
 
-## Introduction
+## 🌟 Overview
 
-Natural language querying allows users to interact with databases more intuitively and efficiently. By leveraging the power of LangChain, SQL Agents, and OpenAI’s Large Language Models (LLMs) like ChatGPT, we have created an application that enables users to query databases using NLP. All it needs a SQL-based schema, and it can perform any read and write action to that schema.
+**Chat To Your Database** is an innovative AI-powered platform that revolutionizes how users interact with databases. By leveraging LangChain SQL Agents and high-performance language models (Groq and OpenAI), it enables anyone to query, analyze, and manipulate databases using simple natural language - no SQL knowledge required!
 
-This is an experimental app to test the abilities of LLMs to query SQL databases using [SQL Agents](https://github.com/Syed007Hassan/Langchain) provided by Langchain.
-To use it, you should have an OPENAI_API_KEY.
+Whether you're a data analyst seeking insights, a developer debugging queries, or a business user exploring data, our platform makes database operations accessible to everyone.
 
-## Features
-- Auto-generate SQL queries from the natural language descriptions
-- Translate SQL queries from one dialect to another
-- Optimize SQL queries to make them run faster
-- Analyze SQL queries to identify potential problems
-- Optimize the SQL queries that are used to fetch data from the SQL database
-- Analyze the SQL queries that are used in your NextJS application to identify potential problems
-- Displays all the data in the form of a table after executing the query on a schema
-- Stores the history prompts and the queries generated in No-SQL
+## ✨ Key Features
 
-## Examples 
+### 🤖 **AI-Powered Query Generation**
+- Convert natural language questions into optimized SQL queries
+- Support for complex joins, aggregations, and nested queries
+- Intelligent error handling and query suggestions
 
-### Sample database SQLite
-![Sample northwind database](https://user-images.githubusercontent.com/1945179/233065892-25edda54-01a2-467d-8a72-b96a30c71a5a.png)
+### 🔄 **Multi-Database Support**
+- **SQLite**: Perfect for development and small applications
+- **PostgreSQL**: Enterprise-grade relational database support
+- **MongoDB**: NoSQL document database integration
 
-#### See it in action
+### 🎯 **Smart Query Operations**
+- Automatic SQL query generation from natural language
+- Query optimization and performance analysis
+- SQL dialect translation between different databases
+- Real-time query execution and results
 
-https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/2616a2b5-0512-47f0-8271-014a6d243213
+### 📊 **Rich Data Visualization**
+- Interactive table displays with sorting and filtering
+- Export results in multiple formats
+- Query history tracking and management
+- Real-time execution monitoring
 
-### Sample database PostgreSQL
-![DVDRental](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/ec2eda87-8f98-42da-9b2e-db2ed1998d29)
+### 🔐 **Enterprise Security**
+- JWT-based authentication system
+- Secure database connection management
+- User session management
+- Query history and audit trails
 
-#### See it in action
+### 🚀 **Developer Experience**
+- Docker containerized deployment
+- RESTful API architecture
+- Comprehensive error handling
+- Easy local development setup
 
-![pg res](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/4c8c94a2-5025-425b-ba5c-19b6036af534)
+## 🏗️ Architecture
 
-## Tech Stack
-  * **Frontend**: NextJS, TailwindCSS, Flowbite 
-  * **Backend**: ExpressJS, NestJS
-  * **Databases**: Sqlite, PostgreSQL, MongoDB
-  * **LLM**: Langchain SQL Agent with Open AI LLM
+```mermaid
+graph TB
+    A[🌐 Frontend - Next.js] --> B[🚪 API Gateway - NestJS]
+    B --> C[🤖 LangChain SQL Agent]
+    C --> D1[🧠 OpenAI GPT Models]
+    C --> D2[⚡ Groq LLMs]
+    B --> E[🔐 JWT Auth Service]
+    B --> F[(🐘 PostgreSQL)]
+    B --> G[(💾 SQLite)]
+    B --> H[(🍃 MongoDB)]
+    B --> I[📝 Query History Service]
+    
+    style A fill:#0ea5e9,stroke:#0284c7,stroke-width:2px,color:#ffffff
+    style B fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#ffffff
+    style C fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
+    style D1 fill:#7c3aed,stroke:#6d28d9,stroke-width:2px,color:#ffffff
+    style D2 fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#000000
+    style E fill:#374151,stroke:#1f2937,stroke-width:2px,color:#ffffff
+    style F fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
+    style G fill:#64748b,stroke:#475569,stroke-width:2px,color:#ffffff
+    style H fill:#16a34a,stroke:#15803d,stroke-width:2px,color:#ffffff
+    style I fill:#ec4899,stroke:#db2777,stroke-width:2px,color:#ffffff
+```
 
-## Getting Started
+## 🛠️ Tech Stack
 
-### Add Env file 
+### **Frontend**
+- **Next.js 13.5.6** - React framework with App Router
+- **TypeScript 5.0+** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **Flowbite React** - Component library
+- **Material-UI** - Advanced UI components
+- **NextAuth.js** - Authentication solution
 
-After cloning the repo, change the directory to nest_api, and add a **.env** file.
+### **Backend**
+- **NestJS 10.0** - Scalable Node.js framework
+- **TypeORM** - Database ORM with TypeScript support
+- **Passport.js** - Authentication middleware
+- **JWT** - Secure token-based authentication
+- **Swagger** - API documentation
 
-```bash!
-OPENAI_API_KEY=sk-xxx
-# Docker environment variables
+### **AI & Data Processing**
+- **LangChain 0.0.195** - AI agent framework
+- **Groq API** - High-performance inference (Primary)
+- **OpenAI API** - Large language model integration (Optional)
+- **SQL Agent** - Specialized database interaction agent
+
+### **Databases**
+- **PostgreSQL** - Primary relational database
+- **SQLite 3** - Embedded database support
+- **MongoDB** - Document database for sessions and logs
+
+### **DevOps & Infrastructure**
+- **Docker & Docker Compose** - Containerized deployment
+- **pgAdmin** - PostgreSQL administration interface
+- **ESLint & Prettier** - Code quality tools
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** 18.0 or higher
+- **Docker** and **Docker Compose**
+- **AI API Key** (Choose one or both):
+  - **Groq API Key** ([Get yours here](https://console.groq.com/keys)) - **Recommended for speed**
+  - **OpenAI API Key** (Optional - [Get yours here](https://platform.openai.com/api-keys))
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Syed007Hassan/Chat-To-Your-Database.git
+cd Chat-To-Your-Database
+```
+
+### 2. Environment Setup
+Create a `.env` file in the root directory:
+
+```env
+# Authentication
+NEXTAUTH_SECRET=your-nextauth-secret-here
+NEXTAUTH_URL=http://localhost:3000
+JWT_SECRET=your-jwt-secret-here
+
+# AI API Keys (At least one required)
+GROQ_API_KEY=gsk-your-groq-api-key-here
+OPENAI_API_KEY=sk-your-openai-api-key-here  # Optional
+
+# Database Configuration
 DB_TYPE=postgres
+DB_HOST=postgres
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_NAME=postgres
 PG_HOST=postgres
 PG_USER=postgres
 PG_PASSWORD=postgres
 PG_DB=postgres
 PG_PORT=5432
+
+# PostgreSQL Docker Setup
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 POSTGRES_DB=postgres
+
+# pgAdmin Configuration
 PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com
 PGADMIN_DEFAULT_PASSWORD=admin
+
+# MongoDB Configuration
 MONGO_INITDB_ROOT_USERNAME=root
 MONGO_INITDB_ROOT_PASSWORD=pass12345
 MONGO_URL=mongodb://root:pass12345@mongodb:27017/chatwithdb?authSource=admin
-PORT=5000
+
+# Application Configuration
+PORT=5001
 ```
-### Running the APP using Docker Compose with your own Database (PostgreSQL)
 
-- Build the image using
-  **```  docker-compose build --no-cache  ```**
-- Run Container with the build image
-  **``` docker-compose up ```**
+### 3. Docker Deployment (Recommended)
+```bash
+# Build and start all services
+docker-compose build --no-cache
+docker-compose up -d
 
-     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/42c9a960-d5df-4de1-b159-fa0dbcdf8c96)
-  
-- Open PgAdmin to upload your Database (I will use ***.tar** file to upload the whole database, you could use any method, and just remember to name the database as mentioned in **.env**. In my case it is **postgres**)
-- On **``` localhost:5050 ```**, login to PgAdmin
- 
-     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/b0cfb4ca-51f2-4293-b50d-ec60f9bfd4ec)
+# Verify services are running
+docker-compose ps
+```
 
-- Create a server group
-  
-     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/29cadd3e-d232-479f-aa81-646b4a996bb9)
- 
-- Then register server
-  
-     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/e501184d-3599-444a-996d-e929ca7146c6)
+### 4. Manual Installation
 
-     ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/d5cb009a-bded-4f20-b88d-5c5831a6ad79)
+#### Backend Setup
+```bash
+cd nest_api
+npm install
+npm run start:dev
+```
 
-- Now restore the database to upload the file
-  
-    ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/da7d64fa-f71b-4ad9-85dd-4c5c72a60406)
+#### Frontend Setup
+```bash
+cd client
+npm install
+npm run dev
+```
 
-    ![image](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/520d9769-3de6-419f-ae00-d29701be42ab)
+### 5. Access the Application
+- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Backend API**: [http://localhost:5001](http://localhost:5001)
+- **pgAdmin**: [http://localhost:5050](http://localhost:5050)
+- **API Documentation**: [http://localhost:5001/api/docs](http://localhost:5001/api/docs)
 
-- After restoring, all the tables will be shown
+## 📖 Usage Guide
 
-- Run the frontend after changing the directory to the client and then using **``` npm run dev ```**, available at **``` localhost:3000 ```**
-- Register and then Sign-in, the application will be redirected towards  **```/chat```** URL
-- According to your schema write any prompt to generate an SQL query and the results database contains
-  
-    ![chatpath](https://github.com/Syed007Hassan/NextJs-Langchain-Agents-SQL/assets/104893311/7583e9a1-4558-4020-8c96-e5e36b1e1e42)
+### Getting Started with Your First Query
 
-## Contribution Guidelines
+1. **Sign Up/Login**: Create an account or sign in at the homepage
+2. **Navigate to Chat**: Go to the `/chat` page to start querying
+3. **Connect Database**: The system connects to your configured database automatically
+4. **Start Asking**: Begin asking questions about your data in natural language
 
-Contributions to this project are highly encouraged and appreciated. To help us maintain a high level of quality, please follow these contribution guidelines:
+### Example Queries
 
-- Fork the repository to your GitHub account.
-- Make changes and improvements in your forked repository.
-- Test your changes thoroughly.
-- Create a well-explained pull request detailing the changes you made and the problems they solve.
-- Ensure your pull requests comply with the coding standards and styles followed in the project.
-- Be responsive to feedback and iterate on your contributions, if necessary.
-- Upon review, your pull request will go through a validation process by the project maintainers. Once approved, your changes will be merged into the main branch, and you will become a contributor to the NextJs Langchain Agents SQL project. We appreciate your efforts in making this project better and more valuable.
+```
+💬 "Show me all customers from New York"
+💬 "What are the top 5 best-selling products?"
+💬 "Find the total sales for last month"
+💬 "Which employees have the highest performance?"
+💬 "Create a summary of orders by category"
+💬 "Show me products with low inventory"
+```
 
-Please follow the contribution guidelines outlined in the [Contributing.md](CONTRIBUTING.md) file in this repository, to make sure that your contributions align with the project standards.
+### Database Setup
 
+#### Loading Sample Data (SQLite)
+The application includes the Northwind sample database:
+```bash
+cd client
+npm run seed  # Loads sample data
+```
 
-## License
-This project is licensed under the [MIT License](./LICENSE).
+#### Using PostgreSQL
+1. Access pgAdmin at `localhost:5050`
+2. Login with credentials from your `.env` file
+3. Create a new server connection to `postgres:5432`
+4. Import your database or use the provided sample data
 
+## 🎯 Advanced Features
 
+### Query History & Analytics
+- All queries stored with timestamps and performance metrics
+- View and rerun previous successful queries
+- Export query history for analysis
 
+### Multi-Model AI Support
+- **Groq**: High-speed inference for rapid responses (Primary recommendation)
+- **OpenAI GPT**: Advanced reasoning and complex queries (Optional alternative)
+- Flexible model configuration - use either or both APIs
+
+### Security Features
+- JWT-based authentication
+- Secure database connections
+- Query validation and sanitization
+- User session management
+
+## 🔧 Development
+
+### Project Structure
+```
+Chat-To-Your-Database/
+├── client/                 # Next.js frontend application
+│   ├── src/
+│   │   ├── app/           # App router pages
+│   │   ├── components/    # Reusable React components
+│   │   ├── lib/          # Utility functions
+│   │   └── interfaces/   # TypeScript definitions
+│   └── package.json
+├── nest_api/              # NestJS backend application
+│   ├── src/
+│   │   ├── ai/           # AI service and LangChain integration
+│   │   ├── auth/         # Authentication module
+│   │   ├── user/         # User management
+│   │   └── main.ts       # Application entry point
+│   ├── docker-compose.yaml
+│   └── package.json
+└── README.md
+```
+
+### Running Tests
+```bash
+# Backend tests
+cd nest_api
+npm run test
+npm run test:e2e
+
+# Frontend tests
+cd client
+npm test
+```
+
+### Code Quality
+```bash
+# Linting
+npm run lint
+npm run lint:fix
+
+# Formatting
+npm run format
+```
+
+## 🐳 Docker Services
+
+The application uses Docker Compose with the following services:
+
+- **nestapp**: NestJS API server (Port: 5001)
+- **client**: Next.js frontend (Port: 3000)
+- **postgres**: PostgreSQL database (Port: 5432)
+- **pgadmin**: Database administration (Port: 5050)
+- **mongodb**: Document database (Port: 27017)
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+### Getting Started
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes and test thoroughly
+4. Commit your changes: `git commit -m 'Add amazing feature'`
+5. Push to the branch: `git push origin feature/amazing-feature`
+6. Open a Pull Request
+
+### Areas for Contribution
+- 🌐 Additional database support (MySQL, Oracle, etc.)
+- 🎨 UI/UX improvements and themes
+- 📊 Advanced data visualization features
+- 🔒 Enhanced security features
+- 🌍 Internationalization support
+- 📱 Mobile responsiveness improvements
+
+### Contribution Guidelines
+- Follow existing code style and conventions
+- Write comprehensive tests for new features
+- Update documentation for API changes
+- Ensure all tests pass before submitting
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **OpenAI** for providing powerful language models
+- **Groq** for high-performance AI inference
+- **LangChain** for the incredible SQL agent framework
+- **Vercel** for Next.js and deployment solutions
+- **NestJS** community for the robust backend framework
+
+## 📞 Support & Community
+
+- 🐛 **Issues**: [GitHub Issues](https://github.com/Syed007Hassan/Chat-To-Your-Database/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/Syed007Hassan/Chat-To-Your-Database/discussions)
+- 📧 **Email**: Contact *syed007hassan@gmail.com* for any questions or support.
+
+---
+
+<div align="center">
+
+**⭐ If you find this project helpful, please consider giving it a star on GitHub! ⭐**
+
+Made with ❤️ by [Syed Hassan](https://github.com/Syed007Hassan)
+
+</div>
