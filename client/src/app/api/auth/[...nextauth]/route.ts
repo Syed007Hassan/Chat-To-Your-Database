@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const response = await axios.post(
-            `${config.baseURl}/auth/login`,
+            `${config.serverBaseUrl}/auth/login`,
             {
               email,
               password,
