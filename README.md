@@ -72,16 +72,16 @@ graph TB
     B --> H[(🍃 MongoDB)]
     B --> I[📝 Query History Service]
     
-    style A fill:#61dafb
-    style B fill:#e0234e
-    style C fill:#00d4aa
-    style D1 fill:#412991
-    style D2 fill:#f55036
-    style E fill:#000000
-    style F fill:#336791
-    style G fill:#003b57
-    style H fill:#4db33d
-    style I fill:#ff6b6b
+    style A fill:#0ea5e9,stroke:#0284c7,stroke-width:2px,color:#ffffff
+    style B fill:#dc2626,stroke:#b91c1c,stroke-width:2px,color:#ffffff
+    style C fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
+    style D1 fill:#7c3aed,stroke:#6d28d9,stroke-width:2px,color:#ffffff
+    style D2 fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#000000
+    style E fill:#374151,stroke:#1f2937,stroke-width:2px,color:#ffffff
+    style F fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
+    style G fill:#64748b,stroke:#475569,stroke-width:2px,color:#ffffff
+    style H fill:#16a34a,stroke:#15803d,stroke-width:2px,color:#ffffff
+    style I fill:#ec4899,stroke:#db2777,stroke-width:2px,color:#ffffff
 ```
 
 ## 🛠️ Tech Stack
